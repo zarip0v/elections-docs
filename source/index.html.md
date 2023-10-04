@@ -1,5 +1,5 @@
 ---
-title: Swagger Smart Elections v0.0.3
+title: Swagger Smart Elections v0.0.4
 language_tabs:
   - shell: Shell
   - http: HTTP
@@ -20,7 +20,7 @@ headingLevel: 2
 
 <!-- Generator: Widdershins v4.0.1 -->
 
-<h1 id="swagger-smart-elections">Swagger Smart Elections v0.0.3</h1>
+<h1 id="swagger-smart-elections">Swagger Smart Elections v0.0.4</h1>
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
@@ -44,6 +44,176 @@ Base URLs:
 <h1 id="swagger-smart-elections-elector">elector</h1>
 
 Инструментарий для пользователя
+
+## post__elections_becomeCandidate_{electionId}
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST https://elections.hse.ru/elections/becomeCandidate/{electionId}?candidate=name,%D0%98%D0%BC%D1%8F,photoUrl,https%3A%2F%2Fimg.com%2Fimg.png,description,%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0 \
+  -H 'Authorization: Bearer {access-token}'
+
+```
+
+```http
+POST https://elections.hse.ru/elections/becomeCandidate/{electionId}?candidate=name,%D0%98%D0%BC%D1%8F,photoUrl,https%3A%2F%2Fimg.com%2Fimg.png,description,%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0 HTTP/1.1
+Host: elections.hse.ru
+
+```
+
+```javascript
+
+const headers = {
+  'Authorization':'Bearer {access-token}'
+};
+
+fetch('https://elections.hse.ru/elections/becomeCandidate/{electionId}?candidate=name,%D0%98%D0%BC%D1%8F,photoUrl,https%3A%2F%2Fimg.com%2Fimg.png,description,%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0',
+{
+  method: 'POST',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Authorization' => 'Bearer {access-token}'
+}
+
+result = RestClient.post 'https://elections.hse.ru/elections/becomeCandidate/{electionId}',
+  params: {
+  'candidate' => '[CandidateRequest](#schemacandidaterequest)'
+}, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Authorization': 'Bearer {access-token}'
+}
+
+r = requests.post('https://elections.hse.ru/elections/becomeCandidate/{electionId}', params={
+  'candidate': {
+  "name": "Имя",
+  "photoUrl": "https://img.com/img.png",
+  "description": "Программа"
+}
+}, headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Authorization' => 'Bearer {access-token}',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('POST','https://elections.hse.ru/elections/becomeCandidate/{electionId}', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("https://elections.hse.ru/elections/becomeCandidate/{electionId}?candidate=name,%D0%98%D0%BC%D1%8F,photoUrl,https%3A%2F%2Fimg.com%2Fimg.png,description,%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Authorization": []string{"Bearer {access-token}"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("POST", "https://elections.hse.ru/elections/becomeCandidate/{electionId}", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`POST /elections/becomeCandidate/{electionId}`
+
+*Стать кандидатом/редактировать профиль*
+
+Стать кандидатом в выборах/редактировать профиль
+
+<h3 id="post__elections_becomecandidate_{electionid}-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|electionId|path|integer(int64)|true|Выборы|
+|candidate|query|[CandidateRequest](#schemacandidaterequest)|true|Кандидат|
+
+<h3 id="post__elections_becomecandidate_{electionid}-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Успешно|None|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Невалидно|None|
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+elk_auth ( Scopes: elector )
+</aside>
 
 ## get__elections_all
 
@@ -216,36 +386,7 @@ func main() {
 
 ```json
 [
-  {
-    "name": "Выборы в КпЦ",
-    "isRunoff": true,
-    "mandates": 0,
-    "isForNearForeign": true,
-    "isForFarForeign": true,
-    "acceptedCampusesIds": [
-      1,
-      2
-    ],
-    "acceptedCouncilOrganizationsIds": [
-      1,
-      2
-    ],
-    "acceptedFacultiesIds": [
-      1,
-      2
-    ],
-    "acceptedDormitoriesIds": [
-      1,
-      2
-    ],
-    "acceptedCities": [
-      "Москва",
-      "Пермь"
-    ],
-    "startTime": "2019-08-24T14:15:22Z",
-    "finishTime": "2019-08-24T14:15:22Z",
-    "status": "waiting"
-  }
+  0
 ]
 ```
 
@@ -253,37 +394,9 @@ func main() {
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Возвращает выборы|Inline|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Возвращает ID выборов|Inline|
 
 <h3 id="get__elections_all-responseschema">Response Schema</h3>
-
-Status Code **200**
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|*anonymous*|[[Election](#schemaelection)]|false|none|none|
-|» name|string|true|none|none|
-|» isRunoff|boolean|true|none|none|
-|» mandates|integer(int64)|false|none|none|
-|» isForNearForeign|boolean|true|none|none|
-|» isForFarForeign|boolean|true|none|none|
-|» acceptedCampusesIds|[integer]|false|none|none|
-|» acceptedCouncilOrganizationsIds|[integer]|false|none|none|
-|» acceptedFacultiesIds|[integer]|false|none|none|
-|» acceptedDormitoriesIds|[integer]|false|none|none|
-|» acceptedCities|[string]|false|none|none|
-|» startTime|string(date-time)|true|none|none|
-|» finishTime|string(date-time)|false|none|none|
-|» status|string|true|none|none|
-
-#### Enumerated Values
-
-|Property|Value|
-|---|---|
-|status|waiting|
-|status|started|
-|status|finished|
-|status|results|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -458,10 +571,6 @@ func main() {
   "mandates": 0,
   "isForNearForeign": true,
   "isForFarForeign": true,
-  "acceptedCampusesIds": [
-    1,
-    2
-  ],
   "acceptedCouncilOrganizationsIds": [
     1,
     2
@@ -474,13 +583,9 @@ func main() {
     1,
     2
   ],
-  "acceptedCities": [
-    "Москва",
-    "Пермь"
-  ],
   "startTime": "2019-08-24T14:15:22Z",
   "finishTime": "2019-08-24T14:15:22Z",
-  "status": "waiting"
+  "status": "draft"
 }
 ```
 
@@ -660,8 +765,11 @@ func main() {
 ```json
 [
   {
-    "studentId": 1,
-    "description": "Программа"
+    "id": 1,
+    "name": "Имя",
+    "photoUrl": "https://img.com/img.png",
+    "description": "Программа",
+    "approved": true
   }
 ]
 ```
@@ -670,7 +778,7 @@ func main() {
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Возвращает выборы|Inline|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Возвращает кандидатов|Inline|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Невалидный ID|None|
 
 <h3 id="get__elections_getcandidates_{electionid}-responseschema">Response Schema</h3>
@@ -680,8 +788,11 @@ Status Code **200**
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |*anonymous*|[[Candidate](#schemacandidate)]|false|none|none|
-|» studentId|integer(int64)|true|none|none|
-|» description|string|false|none|none|
+|» id|integer(int64)|true|none|none|
+|» name|string|true|none|none|
+|» photoUrl|string(url)|true|none|none|
+|» description|string|true|none|none|
+|» approved|boolean|true|none|none|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -1017,34 +1128,35 @@ func main() {
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |electionId|path|integer(int64)|true|ID|
-|voice|query|string|false|Зашифрованная публичным ключом строка JSON: в случае runoff [candidateId, candidateId] в порядке предпочтения, иначе - [[candidateId, voicesCount], [candidateId, voicesCount]]|
+|voice|query|string|false|Зашифрованная публичным ключом строка JSON: в случае runoff {random: '293029302', voice: [candidateId, candidateId]} в порядке предпочтения, иначе - {random: '293029302', voice: [[candidateId, voicesCount], [candidateId, voicesCount]]}|
 
 <h3 id="post__elections_vote_{electionid}-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Голос принят|None|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Неверно|None|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Голосование не началось/уже закончилось|None|
+|409|[Conflict](https://tools.ietf.org/html/rfc7231#section-6.5.8)|Голос уже был принят|None|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
 elk_auth ( Scopes: elect )
 </aside>
 
-## post__elections_publicKey_{electionId}
+## get__elections_publicKey_{electionId}
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X POST https://elections.hse.ru/elections/publicKey/{electionId} \
+curl -X GET https://elections.hse.ru/elections/publicKey/{electionId} \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```http
-POST https://elections.hse.ru/elections/publicKey/{electionId} HTTP/1.1
+GET https://elections.hse.ru/elections/publicKey/{electionId} HTTP/1.1
 Host: elections.hse.ru
 Accept: application/json
 
@@ -1059,7 +1171,7 @@ const headers = {
 
 fetch('https://elections.hse.ru/elections/publicKey/{electionId}',
 {
-  method: 'POST',
+  method: 'GET',
 
   headers: headers
 })
@@ -1080,7 +1192,7 @@ headers = {
   'Authorization' => 'Bearer {access-token}'
 }
 
-result = RestClient.post 'https://elections.hse.ru/elections/publicKey/{electionId}',
+result = RestClient.get 'https://elections.hse.ru/elections/publicKey/{electionId}',
   params: {
   }, headers: headers
 
@@ -1095,7 +1207,7 @@ headers = {
   'Authorization': 'Bearer {access-token}'
 }
 
-r = requests.post('https://elections.hse.ru/elections/publicKey/{electionId}', headers = headers)
+r = requests.get('https://elections.hse.ru/elections/publicKey/{electionId}', headers = headers)
 
 print(r.json())
 
@@ -1117,7 +1229,7 @@ $client = new \GuzzleHttp\Client();
 $request_body = array();
 
 try {
-    $response = $client->request('POST','https://elections.hse.ru/elections/publicKey/{electionId}', array(
+    $response = $client->request('GET','https://elections.hse.ru/elections/publicKey/{electionId}', array(
         'headers' => $headers,
         'json' => $request_body,
        )
@@ -1136,7 +1248,7 @@ try {
 ```java
 URL obj = new URL("https://elections.hse.ru/elections/publicKey/{electionId}");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("POST");
+con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
 BufferedReader in = new BufferedReader(
     new InputStreamReader(con.getInputStream()));
@@ -1166,7 +1278,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("POST", "https://elections.hse.ru/elections/publicKey/{electionId}", data)
+    req, err := http.NewRequest("GET", "https://elections.hse.ru/elections/publicKey/{electionId}", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -1176,11 +1288,11 @@ func main() {
 
 ```
 
-`POST /elections/publicKey/{electionId}`
+`GET /elections/publicKey/{electionId}`
 
 *Получить публичный ключ*
 
-<h3 id="post__elections_publickey_{electionid}-parameters">Parameters</h3>
+<h3 id="get__elections_publickey_{electionid}-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -1194,11 +1306,12 @@ func main() {
 "string"
 ```
 
-<h3 id="post__elections_publickey_{electionid}-responses">Responses</h3>
+<h3 id="get__elections_publickey_{electionid}-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Возвращает публичный ключ|string|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Ключ ещё не загружен|string|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -1548,13 +1661,13 @@ elk_auth ( Scopes: admin )
 
 ```shell
 # You can also use wget
-curl -X POST https://elections.hse.ru/elections/create?election=name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCampusesIds,1%2C2,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,acceptedCities,%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%D0%9F%D0%B5%D1%80%D0%BC%D1%8C,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,waiting \
+curl -X POST https://elections.hse.ru/elections/create?election=name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft \
   -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```http
-POST https://elections.hse.ru/elections/create?election=name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCampusesIds,1%2C2,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,acceptedCities,%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%D0%9F%D0%B5%D1%80%D0%BC%D1%8C,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,waiting HTTP/1.1
+POST https://elections.hse.ru/elections/create?election=name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft HTTP/1.1
 Host: elections.hse.ru
 
 ```
@@ -1565,7 +1678,7 @@ const headers = {
   'Authorization':'Bearer {access-token}'
 };
 
-fetch('https://elections.hse.ru/elections/create?election=name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCampusesIds,1%2C2,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,acceptedCities,%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%D0%9F%D0%B5%D1%80%D0%BC%D1%8C,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,waiting',
+fetch('https://elections.hse.ru/elections/create?election=name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft',
 {
   method: 'POST',
 
@@ -1609,10 +1722,6 @@ r = requests.post('https://elections.hse.ru/elections/create', params={
   "mandates": 0,
   "isForNearForeign": true,
   "isForFarForeign": true,
-  "acceptedCampusesIds": [
-    1,
-    2
-  ],
   "acceptedCouncilOrganizationsIds": [
     1,
     2
@@ -1625,13 +1734,9 @@ r = requests.post('https://elections.hse.ru/elections/create', params={
     1,
     2
   ],
-  "acceptedCities": [
-    "Москва",
-    "Пермь"
-  ],
   "startTime": "2019-08-24T14:15:22Z",
   "finishTime": "2019-08-24T14:15:22Z",
-  "status": "waiting"
+  "status": "draft"
 }
 }, headers = headers)
 
@@ -1671,7 +1776,7 @@ try {
 ```
 
 ```java
-URL obj = new URL("https://elections.hse.ru/elections/create?election=name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCampusesIds,1%2C2,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,acceptedCities,%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%D0%9F%D0%B5%D1%80%D0%BC%D1%8C,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,waiting");
+URL obj = new URL("https://elections.hse.ru/elections/create?election=name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("POST");
 int responseCode = con.getResponseCode();
@@ -1736,19 +1841,19 @@ To perform this operation, you must be authenticated by means of one of the foll
 elk_auth ( Scopes: admin )
 </aside>
 
-## post__elections_addCandidate_{electionId}
+## post__elections_approveCandidate_{candidateId}
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X POST https://elections.hse.ru/elections/addCandidate/{electionId}?candidate=studentId,1,description,%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0 \
+curl -X POST https://elections.hse.ru/elections/approveCandidate/{candidateId}?approve=true \
   -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```http
-POST https://elections.hse.ru/elections/addCandidate/{electionId}?candidate=studentId,1,description,%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0 HTTP/1.1
+POST https://elections.hse.ru/elections/approveCandidate/{candidateId}?approve=true HTTP/1.1
 Host: elections.hse.ru
 
 ```
@@ -1759,7 +1864,7 @@ const headers = {
   'Authorization':'Bearer {access-token}'
 };
 
-fetch('https://elections.hse.ru/elections/addCandidate/{electionId}?candidate=studentId,1,description,%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0',
+fetch('https://elections.hse.ru/elections/approveCandidate/{candidateId}?approve=true',
 {
   method: 'POST',
 
@@ -1781,9 +1886,9 @@ headers = {
   'Authorization' => 'Bearer {access-token}'
 }
 
-result = RestClient.post 'https://elections.hse.ru/elections/addCandidate/{electionId}',
+result = RestClient.post 'https://elections.hse.ru/elections/approveCandidate/{candidateId}',
   params: {
-  'candidate' => '[Candidate](#schemacandidate)'
+  'approve' => 'boolean'
 }, headers: headers
 
 p JSON.parse(result)
@@ -1796,11 +1901,8 @@ headers = {
   'Authorization': 'Bearer {access-token}'
 }
 
-r = requests.post('https://elections.hse.ru/elections/addCandidate/{electionId}', params={
-  'candidate': {
-  "studentId": 1,
-  "description": "Программа"
-}
+r = requests.post('https://elections.hse.ru/elections/approveCandidate/{candidateId}', params={
+  'approve': 'true'
 }, headers = headers)
 
 print(r.json())
@@ -1822,7 +1924,7 @@ $client = new \GuzzleHttp\Client();
 $request_body = array();
 
 try {
-    $response = $client->request('POST','https://elections.hse.ru/elections/addCandidate/{electionId}', array(
+    $response = $client->request('POST','https://elections.hse.ru/elections/approveCandidate/{candidateId}', array(
         'headers' => $headers,
         'json' => $request_body,
        )
@@ -1839,7 +1941,7 @@ try {
 ```
 
 ```java
-URL obj = new URL("https://elections.hse.ru/elections/addCandidate/{electionId}?candidate=studentId,1,description,%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0");
+URL obj = new URL("https://elections.hse.ru/elections/approveCandidate/{candidateId}?approve=true");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("POST");
 int responseCode = con.getResponseCode();
@@ -1870,7 +1972,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("POST", "https://elections.hse.ru/elections/addCandidate/{electionId}", data)
+    req, err := http.NewRequest("POST", "https://elections.hse.ru/elections/approveCandidate/{candidateId}", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -1880,20 +1982,20 @@ func main() {
 
 ```
 
-`POST /elections/addCandidate/{electionId}`
+`POST /elections/approveCandidate/{candidateId}`
 
-*Добавить кандидата в выборы*
+*Одобрить/отклонить кандидата*
 
-Добавить кандидата в выборы
+Одобрить/отклонить кандидата
 
-<h3 id="post__elections_addcandidate_{electionid}-parameters">Parameters</h3>
+<h3 id="post__elections_approvecandidate_{candidateid}-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|electionId|path|integer(int64)|true|Выборы|
-|candidate|query|[Candidate](#schemacandidate)|true|Кандидат|
+|candidateId|path|integer(int64)|true|Кандидат в выборы|
+|approve|query|boolean|true|Одобрить/отклонить заявку|
 
-<h3 id="post__elections_addcandidate_{electionid}-responses">Responses</h3>
+<h3 id="post__elections_approvecandidate_{candidateid}-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -1905,37 +2007,32 @@ To perform this operation, you must be authenticated by means of one of the foll
 elk_auth ( Scopes: admin )
 </aside>
 
-<h1 id="swagger-smart-elections-dictionary">dictionary</h1>
-
-Справочники
-
-## get__dictionaries_campus
+## post__elections_publish_{electionId}
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X GET https://elections.hse.ru/dictionaries/campus \
-  -H 'Accept: application/json'
+curl -X POST https://elections.hse.ru/elections/publish/{electionId}?isDraft=true \
+  -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```http
-GET https://elections.hse.ru/dictionaries/campus HTTP/1.1
+POST https://elections.hse.ru/elections/publish/{electionId}?isDraft=true HTTP/1.1
 Host: elections.hse.ru
-Accept: application/json
 
 ```
 
 ```javascript
 
 const headers = {
-  'Accept':'application/json'
+  'Authorization':'Bearer {access-token}'
 };
 
-fetch('https://elections.hse.ru/dictionaries/campus',
+fetch('https://elections.hse.ru/elections/publish/{electionId}?isDraft=true',
 {
-  method: 'GET',
+  method: 'POST',
 
   headers: headers
 })
@@ -1952,12 +2049,13 @@ require 'rest-client'
 require 'json'
 
 headers = {
-  'Accept' => 'application/json'
+  'Authorization' => 'Bearer {access-token}'
 }
 
-result = RestClient.get 'https://elections.hse.ru/dictionaries/campus',
+result = RestClient.post 'https://elections.hse.ru/elections/publish/{electionId}',
   params: {
-  }, headers: headers
+  'isDraft' => 'boolean'
+}, headers: headers
 
 p JSON.parse(result)
 
@@ -1966,10 +2064,12 @@ p JSON.parse(result)
 ```python
 import requests
 headers = {
-  'Accept': 'application/json'
+  'Authorization': 'Bearer {access-token}'
 }
 
-r = requests.get('https://elections.hse.ru/dictionaries/campus', headers = headers)
+r = requests.post('https://elections.hse.ru/elections/publish/{electionId}', params={
+  'isDraft': 'true'
+}, headers = headers)
 
 print(r.json())
 
@@ -1981,7 +2081,7 @@ print(r.json())
 require 'vendor/autoload.php';
 
 $headers = array(
-    'Accept' => 'application/json',
+    'Authorization' => 'Bearer {access-token}',
 );
 
 $client = new \GuzzleHttp\Client();
@@ -1990,7 +2090,7 @@ $client = new \GuzzleHttp\Client();
 $request_body = array();
 
 try {
-    $response = $client->request('GET','https://elections.hse.ru/dictionaries/campus', array(
+    $response = $client->request('POST','https://elections.hse.ru/elections/publish/{electionId}', array(
         'headers' => $headers,
         'json' => $request_body,
        )
@@ -2007,9 +2107,9 @@ try {
 ```
 
 ```java
-URL obj = new URL("https://elections.hse.ru/dictionaries/campus");
+URL obj = new URL("https://elections.hse.ru/elections/publish/{electionId}?isDraft=true");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
+con.setRequestMethod("POST");
 int responseCode = con.getResponseCode();
 BufferedReader in = new BufferedReader(
     new InputStreamReader(con.getInputStream()));
@@ -2034,11 +2134,11 @@ import (
 func main() {
 
     headers := map[string][]string{
-        "Accept": []string{"application/json"},
+        "Authorization": []string{"Bearer {access-token}"},
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://elections.hse.ru/dictionaries/campus", data)
+    req, err := http.NewRequest("POST", "https://elections.hse.ru/elections/publish/{electionId}", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -2048,44 +2148,200 @@ func main() {
 
 ```
 
-`GET /dictionaries/campus`
+`POST /elections/publish/{electionId}`
 
-*Кампусы*
+*Установить видимость выборов*
 
-Возвращает кампусы
+Установить видимость выборов (draft)
 
-> Example responses
+<h3 id="post__elections_publish_{electionid}-parameters">Parameters</h3>
 
-> 200 Response
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|electionId|path|integer(int64)|true|ID|
+|isDraft|query|boolean|true|Является ли черновиком|
 
-```json
-[
-  {
-    "id": 1,
-    "name": "Москва"
-  }
-]
-```
-
-<h3 id="get__dictionaries_campus-responses">Responses</h3>
+<h3 id="post__elections_publish_{electionid}-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Возвращает кампусы|Inline|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Выполнено|None|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Невалидный ID|None|
 
-<h3 id="get__dictionaries_campus-responseschema">Response Schema</h3>
-
-Status Code **200**
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|*anonymous*|[[Campus](#schemacampus)]|false|none|none|
-|» id|integer(int64)|true|none|none|
-|» name|string|true|none|none|
-
-<aside class="success">
-This operation does not require authentication
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+elk_auth ( Scopes: admin )
 </aside>
+
+## post__elections_registration_{electionId}
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST https://elections.hse.ru/elections/registration/{electionId}?isRegistrationOpen=true \
+  -H 'Authorization: Bearer {access-token}'
+
+```
+
+```http
+POST https://elections.hse.ru/elections/registration/{electionId}?isRegistrationOpen=true HTTP/1.1
+Host: elections.hse.ru
+
+```
+
+```javascript
+
+const headers = {
+  'Authorization':'Bearer {access-token}'
+};
+
+fetch('https://elections.hse.ru/elections/registration/{electionId}?isRegistrationOpen=true',
+{
+  method: 'POST',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Authorization' => 'Bearer {access-token}'
+}
+
+result = RestClient.post 'https://elections.hse.ru/elections/registration/{electionId}',
+  params: {
+  'isRegistrationOpen' => 'boolean'
+}, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Authorization': 'Bearer {access-token}'
+}
+
+r = requests.post('https://elections.hse.ru/elections/registration/{electionId}', params={
+  'isRegistrationOpen': 'true'
+}, headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Authorization' => 'Bearer {access-token}',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('POST','https://elections.hse.ru/elections/registration/{electionId}', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("https://elections.hse.ru/elections/registration/{electionId}?isRegistrationOpen=true");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Authorization": []string{"Bearer {access-token}"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("POST", "https://elections.hse.ru/elections/registration/{electionId}", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`POST /elections/registration/{electionId}`
+
+*Открыт ли сбор заявок*
+
+Открыт ли сбор заявок
+
+<h3 id="post__elections_registration_{electionid}-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|electionId|path|integer(int64)|true|ID|
+|isRegistrationOpen|query|boolean|true|Открыт ли сбор заявок|
+
+<h3 id="post__elections_registration_{electionid}-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Выполнено|None|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Невалидный ID|None|
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+elk_auth ( Scopes: admin )
+</aside>
+
+<h1 id="swagger-smart-elections-dictionary">dictionary</h1>
+
+Справочники
 
 ## get__dictionaries_faculty
 
@@ -2240,8 +2496,7 @@ func main() {
 [
   {
     "id": 1,
-    "name": "Факультет компьютерных наук",
-    "campusId": 1
+    "name": "Факультет компьютерных наук"
   }
 ]
 ```
@@ -2261,7 +2516,6 @@ Status Code **200**
 |*anonymous*|[[Faculty](#schemafaculty)]|false|none|none|
 |» id|integer(int64)|true|none|none|
 |» name|string|true|none|none|
-|» campusId|integer(int64)|true|none|none|
 
 <aside class="success">
 This operation does not require authentication
@@ -2420,8 +2674,7 @@ func main() {
 [
   {
     "id": 1,
-    "name": "Общежитие №5",
-    "campusId": 1
+    "name": "Общежитие №5"
   }
 ]
 ```
@@ -2441,7 +2694,6 @@ Status Code **200**
 |*anonymous*|[[Dormitory](#schemadormitory)]|false|none|none|
 |» id|integer(int64)|true|none|none|
 |» name|string|true|none|none|
-|» campusId|integer(int64)|true|none|none|
 
 <aside class="success">
 This operation does not require authentication
@@ -2459,11 +2711,8 @@ This operation does not require authentication
 ```json
 {
   "id": 1,
-  "firstname": "Иван",
-  "lastname": "Иванов",
-  "middlename": "Иванович",
+  "fullname": "Иванов Иван Иванович",
   "email": "iiivanov@edu.hse.ru",
-  "campusId": 1,
   "isDormitoryStudent": true,
   "dormitoryId": 1,
   "facultyIds": [
@@ -2477,8 +2726,7 @@ This operation does not require authentication
   ],
   "isPostGraduate": true,
   "isNearForeign": true,
-  "isFarForeign": true,
-  "city": "Moscow"
+  "isFarForeign": true
 }
 
 ```
@@ -2488,11 +2736,8 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |id|integer(int64)|true|none|none|
-|firstname|string|true|none|none|
-|lastname|string|true|none|none|
-|middlename|string|false|none|none|
+|fullname|string|false|none|none|
 |email|string(email)|true|none|none|
-|campusId|integer(int64)|false|none|none|
 |isDormitoryStudent|boolean|true|none|none|
 |dormitoryId|integer(int64)|false|none|none|
 |facultyIds|[integer]|true|none|none|
@@ -2501,29 +2746,6 @@ This operation does not require authentication
 |isPostGraduate|boolean|true|none|none|
 |isNearForeign|boolean|true|none|none|
 |isFarForeign|boolean|true|none|none|
-|city|string|true|none|none|
-
-<h2 id="tocS_Campus">Campus</h2>
-<!-- backwards compatibility -->
-<a id="schemacampus"></a>
-<a id="schema_Campus"></a>
-<a id="tocScampus"></a>
-<a id="tocscampus"></a>
-
-```json
-{
-  "id": 1,
-  "name": "Москва"
-}
-
-```
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|id|integer(int64)|true|none|none|
-|name|string|true|none|none|
 
 <h2 id="tocS_Faculty">Faculty</h2>
 <!-- backwards compatibility -->
@@ -2535,8 +2757,7 @@ This operation does not require authentication
 ```json
 {
   "id": 1,
-  "name": "Факультет компьютерных наук",
-  "campusId": 1
+  "name": "Факультет компьютерных наук"
 }
 
 ```
@@ -2547,7 +2768,6 @@ This operation does not require authentication
 |---|---|---|---|---|
 |id|integer(int64)|true|none|none|
 |name|string|true|none|none|
-|campusId|integer(int64)|true|none|none|
 
 <h2 id="tocS_Dormitory">Dormitory</h2>
 <!-- backwards compatibility -->
@@ -2559,8 +2779,7 @@ This operation does not require authentication
 ```json
 {
   "id": 1,
-  "name": "Общежитие №5",
-  "campusId": 1
+  "name": "Общежитие №5"
 }
 
 ```
@@ -2571,7 +2790,6 @@ This operation does not require authentication
 |---|---|---|---|---|
 |id|integer(int64)|true|none|none|
 |name|string|true|none|none|
-|campusId|integer(int64)|true|none|none|
 
 <h2 id="tocS_CouncilOrganization">CouncilOrganization</h2>
 <!-- backwards compatibility -->
@@ -2583,8 +2801,7 @@ This operation does not require authentication
 ```json
 {
   "id": 1,
-  "name": "Коммитет по цифровизации",
-  "campusId": 1
+  "name": "Коммитет по цифровизации"
 }
 
 ```
@@ -2595,7 +2812,6 @@ This operation does not require authentication
 |---|---|---|---|---|
 |id|integer(int64)|true|none|none|
 |name|string|true|none|none|
-|campusId|integer(int64)|true|none|none|
 
 <h2 id="tocS_Election">Election</h2>
 <!-- backwards compatibility -->
@@ -2611,10 +2827,6 @@ This operation does not require authentication
   "mandates": 0,
   "isForNearForeign": true,
   "isForFarForeign": true,
-  "acceptedCampusesIds": [
-    1,
-    2
-  ],
   "acceptedCouncilOrganizationsIds": [
     1,
     2
@@ -2627,13 +2839,9 @@ This operation does not require authentication
     1,
     2
   ],
-  "acceptedCities": [
-    "Москва",
-    "Пермь"
-  ],
   "startTime": "2019-08-24T14:15:22Z",
   "finishTime": "2019-08-24T14:15:22Z",
-  "status": "waiting"
+  "status": "draft"
 }
 
 ```
@@ -2647,11 +2855,9 @@ This operation does not require authentication
 |mandates|integer(int64)|false|none|none|
 |isForNearForeign|boolean|true|none|none|
 |isForFarForeign|boolean|true|none|none|
-|acceptedCampusesIds|[integer]|false|none|none|
 |acceptedCouncilOrganizationsIds|[integer]|false|none|none|
 |acceptedFacultiesIds|[integer]|false|none|none|
 |acceptedDormitoriesIds|[integer]|false|none|none|
-|acceptedCities|[string]|false|none|none|
 |startTime|string(date-time)|true|none|none|
 |finishTime|string(date-time)|false|none|none|
 |status|string|true|none|none|
@@ -2660,9 +2866,12 @@ This operation does not require authentication
 
 |Property|Value|
 |---|---|
+|status|draft|
+|status|created|
 |status|waiting|
 |status|started|
 |status|finished|
+|status|decrypted|
 |status|results|
 
 <h2 id="tocS_ElectionResults">ElectionResults</h2>
@@ -2699,7 +2908,36 @@ This operation does not require authentication
 
 ```json
 {
-  "studentId": 1,
+  "id": 1,
+  "name": "Имя",
+  "photoUrl": "https://img.com/img.png",
+  "description": "Программа",
+  "approved": true
+}
+
+```
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|id|integer(int64)|true|none|none|
+|name|string|true|none|none|
+|photoUrl|string(url)|true|none|none|
+|description|string|true|none|none|
+|approved|boolean|true|none|none|
+
+<h2 id="tocS_CandidateRequest">CandidateRequest</h2>
+<!-- backwards compatibility -->
+<a id="schemacandidaterequest"></a>
+<a id="schema_CandidateRequest"></a>
+<a id="tocScandidaterequest"></a>
+<a id="tocscandidaterequest"></a>
+
+```json
+{
+  "name": "Имя",
+  "photoUrl": "https://img.com/img.png",
   "description": "Программа"
 }
 
@@ -2709,6 +2947,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|studentId|integer(int64)|true|none|none|
-|description|string|false|none|none|
+|name|string|true|none|none|
+|photoUrl|string(url)|true|none|none|
+|description|string|true|none|none|
 
