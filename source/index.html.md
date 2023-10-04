@@ -1,5 +1,5 @@
 ---
-title: Swagger Smart Elections v0.0.2
+title: Swagger Smart Elections v0.0.3
 language_tabs:
   - shell: Shell
   - http: HTTP
@@ -20,7 +20,7 @@ headingLevel: 2
 
 <!-- Generator: Widdershins v4.0.1 -->
 
-<h1 id="swagger-smart-elections">Swagger Smart Elections v0.0.2</h1>
+<h1 id="swagger-smart-elections">Swagger Smart Elections v0.0.3</h1>
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
@@ -1903,6 +1903,548 @@ func main() {
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
 elk_auth ( Scopes: admin )
+</aside>
+
+<h1 id="swagger-smart-elections-dictionary">dictionary</h1>
+
+Справочники
+
+## get__dictionaries_campus
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET https://elections.hse.ru/dictionaries/campus \
+  -H 'Accept: application/json'
+
+```
+
+```http
+GET https://elections.hse.ru/dictionaries/campus HTTP/1.1
+Host: elections.hse.ru
+Accept: application/json
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('https://elections.hse.ru/dictionaries/campus',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json'
+}
+
+result = RestClient.get 'https://elections.hse.ru/dictionaries/campus',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('https://elections.hse.ru/dictionaries/campus', headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','https://elections.hse.ru/dictionaries/campus', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("https://elections.hse.ru/dictionaries/campus");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "https://elections.hse.ru/dictionaries/campus", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /dictionaries/campus`
+
+*Кампусы*
+
+Возвращает кампусы
+
+> Example responses
+
+> 200 Response
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Москва"
+  }
+]
+```
+
+<h3 id="get__dictionaries_campus-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Возвращает кампусы|Inline|
+
+<h3 id="get__dictionaries_campus-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|*anonymous*|[[Campus](#schemacampus)]|false|none|none|
+|» id|integer(int64)|true|none|none|
+|» name|string|true|none|none|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## get__dictionaries_faculty
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET https://elections.hse.ru/dictionaries/faculty \
+  -H 'Accept: application/json'
+
+```
+
+```http
+GET https://elections.hse.ru/dictionaries/faculty HTTP/1.1
+Host: elections.hse.ru
+Accept: application/json
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('https://elections.hse.ru/dictionaries/faculty',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json'
+}
+
+result = RestClient.get 'https://elections.hse.ru/dictionaries/faculty',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('https://elections.hse.ru/dictionaries/faculty', headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','https://elections.hse.ru/dictionaries/faculty', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("https://elections.hse.ru/dictionaries/faculty");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "https://elections.hse.ru/dictionaries/faculty", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /dictionaries/faculty`
+
+*Факультеты*
+
+Возвращает факультеты
+
+> Example responses
+
+> 200 Response
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Факультет компьютерных наук",
+    "campusId": 1
+  }
+]
+```
+
+<h3 id="get__dictionaries_faculty-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Возвращает факультеты|Inline|
+
+<h3 id="get__dictionaries_faculty-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|*anonymous*|[[Faculty](#schemafaculty)]|false|none|none|
+|» id|integer(int64)|true|none|none|
+|» name|string|true|none|none|
+|» campusId|integer(int64)|true|none|none|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## get__dictionaries_dormitory
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET https://elections.hse.ru/dictionaries/dormitory \
+  -H 'Accept: application/json'
+
+```
+
+```http
+GET https://elections.hse.ru/dictionaries/dormitory HTTP/1.1
+Host: elections.hse.ru
+Accept: application/json
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('https://elections.hse.ru/dictionaries/dormitory',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json'
+}
+
+result = RestClient.get 'https://elections.hse.ru/dictionaries/dormitory',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('https://elections.hse.ru/dictionaries/dormitory', headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','https://elections.hse.ru/dictionaries/dormitory', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("https://elections.hse.ru/dictionaries/dormitory");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "https://elections.hse.ru/dictionaries/dormitory", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /dictionaries/dormitory`
+
+*Общежития*
+
+Возвращает общежития
+
+> Example responses
+
+> 200 Response
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Общежитие №5",
+    "campusId": 1
+  }
+]
+```
+
+<h3 id="get__dictionaries_dormitory-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Возвращает общежития|Inline|
+
+<h3 id="get__dictionaries_dormitory-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|*anonymous*|[[Dormitory](#schemadormitory)]|false|none|none|
+|» id|integer(int64)|true|none|none|
+|» name|string|true|none|none|
+|» campusId|integer(int64)|true|none|none|
+
+<aside class="success">
+This operation does not require authentication
 </aside>
 
 # Schemas
