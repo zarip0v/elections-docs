@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Swagger Smart Elections v0.0.3</title>
+    <title>Swagger Smart Elections v0.0.4</title>
 
     <style media="screen">
       .highlight table td { padding: 5px; }
@@ -313,7 +313,7 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#swagger-smart-elections" class="toc-h1 toc-link" data-title="Swagger Smart Elections v0.0.3">Swagger Smart Elections v0.0.3</a>
+            <a href="#swagger-smart-elections" class="toc-h1 toc-link" data-title="Swagger Smart Elections v0.0.4">Swagger Smart Elections v0.0.4</a>
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
@@ -321,6 +321,9 @@
           <li>
             <a href="#swagger-smart-elections-elector" class="toc-h1 toc-link" data-title="elector">elector</a>
               <ul class="toc-list-h2">
+                  <li>
+                    <a href="#post_elections_becomecandidate-electionid" class="toc-h2 toc-link" data-title="post_elections_becomeCandidate{electionId}">post_<em>elections_becomeCandidate</em>{electionId}</a>
+                  </li>
                   <li>
                     <a href="#get__elections_all" class="toc-h2 toc-link" data-title="get__elections_all">get__elections_all</a>
                   </li>
@@ -337,7 +340,7 @@
                     <a href="#post_elections_vote-electionid" class="toc-h2 toc-link" data-title="post_elections_vote{electionId}">post_<em>elections_vote</em>{electionId}</a>
                   </li>
                   <li>
-                    <a href="#post_elections_publickey-electionid" class="toc-h2 toc-link" data-title="post_elections_publicKey{electionId}">post_<em>elections_publicKey</em>{electionId}</a>
+                    <a href="#get_elections_publickey-electionid" class="toc-h2 toc-link" data-title="get_elections_publicKey{electionId}">get_<em>elections_publicKey</em>{electionId}</a>
                   </li>
               </ul>
           </li>
@@ -359,16 +362,19 @@
                     <a href="#post__elections_create" class="toc-h2 toc-link" data-title="post__elections_create">post__elections_create</a>
                   </li>
                   <li>
-                    <a href="#post_elections_addcandidate-electionid" class="toc-h2 toc-link" data-title="post_elections_addCandidate{electionId}">post_<em>elections_addCandidate</em>{electionId}</a>
+                    <a href="#post_elections_approvecandidate-candidateid" class="toc-h2 toc-link" data-title="post_elections_approveCandidate{candidateId}">post_<em>elections_approveCandidate</em>{candidateId}</a>
+                  </li>
+                  <li>
+                    <a href="#post_elections_publish-electionid" class="toc-h2 toc-link" data-title="post_elections_publish{electionId}">post_<em>elections_publish</em>{electionId}</a>
+                  </li>
+                  <li>
+                    <a href="#post_elections_registration-electionid" class="toc-h2 toc-link" data-title="post_elections_registration{electionId}">post_<em>elections_registration</em>{electionId}</a>
                   </li>
               </ul>
           </li>
           <li>
             <a href="#swagger-smart-elections-dictionary" class="toc-h1 toc-link" data-title="dictionary">dictionary</a>
               <ul class="toc-list-h2">
-                  <li>
-                    <a href="#get__dictionaries_campus" class="toc-h2 toc-link" data-title="get__dictionaries_campus">get__dictionaries_campus</a>
-                  </li>
                   <li>
                     <a href="#get__dictionaries_faculty" class="toc-h2 toc-link" data-title="get__dictionaries_faculty">get__dictionaries_faculty</a>
                   </li>
@@ -382,9 +388,6 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#tocS_Elector" class="toc-h2 toc-link" data-title="Elector">Elector</a>
-                  </li>
-                  <li>
-                    <a href="#tocS_Campus" class="toc-h2 toc-link" data-title="Campus">Campus</a>
                   </li>
                   <li>
                     <a href="#tocS_Faculty" class="toc-h2 toc-link" data-title="Faculty">Faculty</a>
@@ -404,6 +407,9 @@
                   <li>
                     <a href="#tocS_Candidate" class="toc-h2 toc-link" data-title="Candidate">Candidate</a>
                   </li>
+                  <li>
+                    <a href="#tocS_CandidateRequest" class="toc-h2 toc-link" data-title="CandidateRequest">CandidateRequest</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -416,7 +422,7 @@
       <div class="content">
         <!-- Generator: Widdershins v4.0.1 -->
 
-<h1 id="swagger-smart-elections">Swagger Smart Elections v0.0.3</h1>
+<h1 id="swagger-smart-elections">Swagger Smart Elections v0.0.4</h1>
 
 <blockquote>
 <p>Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.</p>
@@ -460,6 +466,189 @@
 <h1 id="swagger-smart-elections-elector">elector</h1>
 
 <p>Инструментарий для пользователя</p>
+<h2 id='post_elections_becomecandidate-electionid'>post_<em>elections_becomeCandidate</em>{electionId}</h2>
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/becomeCandidate/<span class="o">{</span>electionId<span class="o">}</span>?candidate<span class="o">=</span>name,%D0%98%D0%BC%D1%8F,photoUrl,https%3A%2F%2Fimg.com%2Fimg.png,description,%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0 <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://elections.hse.ru/elections/becomeCandidate/{electionId}?candidate=name,%D0%98%D0%BC%D1%8F,photoUrl,https%3A%2F%2Fimg.com%2Fimg.png,description,%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">elections.hse.ru</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">Bearer {access-token}</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://elections.hse.ru/elections/becomeCandidate/{electionId}?candidate=name,%D0%98%D0%BC%D1%8F,photoUrl,https%3A%2F%2Fimg.com%2Fimg.png,description,%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<span class="nb">require</span> <span class="s1">'json'</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span>
+<span class="p">}</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://elections.hse.ru/elections/becomeCandidate/{electionId}'</span><span class="p">,</span>
+  <span class="ss">params: </span><span class="p">{</span>
+  <span class="s1">'candidate'</span> <span class="o">=&gt;</span> <span class="s1">'[CandidateRequest](#schemacandidaterequest)'</span>
+<span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
+
+<span class="nb">p</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {access-token}'</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://elections.hse.ru/elections/becomeCandidate/{electionId}'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+  <span class="s">'candidate'</span><span class="p">:</span> <span class="p">{</span>
+  <span class="s">"name"</span><span class="p">:</span> <span class="s">"Имя"</span><span class="p">,</span>
+  <span class="s">"photoUrl"</span><span class="p">:</span> <span class="s">"https://img.com/img.png"</span><span class="p">,</span>
+  <span class="s">"description"</span><span class="p">:</span> <span class="s">"Программа"</span>
+<span class="p">}</span>
+<span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="k">require</span> <span class="s1">'vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span><span class="p">,</span>
+<span class="p">);</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="err">\</span><span class="nf">GuzzleHttp\Client</span><span class="p">();</span>
+
+<span class="c1">// Define array of request body.</span>
+<span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="nf">request</span><span class="p">(</span><span class="s1">'POST'</span><span class="p">,</span><span class="s1">'https://elections.hse.ru/elections/becomeCandidate/{electionId}'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
+        <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
+       <span class="p">)</span>
+    <span class="p">);</span>
+    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getBody</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">getContents</span><span class="p">());</span>
+ <span class="p">}</span>
+ <span class="k">catch</span> <span class="p">(</span><span class="err">\</span><span class="nc">GuzzleHttp\Exception\BadResponseException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// handle exception or api errors.</span>
+    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="nf">getMessage</span><span class="p">());</span>
+ <span class="p">}</span>
+
+ <span class="c1">// ...</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="no">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://elections.hse.ru/elections/becomeCandidate/{electionId}?candidate=name,%D0%98%D0%BC%D1%8F,photoUrl,https%3A%2F%2Fimg.com%2Fimg.png,description,%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0"</span><span class="o">);</span>
+<span class="nc">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+<span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
+<span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
+<span class="nc">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span>
+    <span class="k">new</span> <span class="nf">InputStreamReader</span><span class="o">(</span><span class="n">con</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
+<span class="nc">String</span> <span class="n">inputLine</span><span class="o">;</span>
+<span class="nc">StringBuffer</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuffer</span><span class="o">();</span>
+<span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">response</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+       <span class="s">"bytes"</span>
+       <span class="s">"net/http"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="n">headers</span> <span class="o">:=</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="p">{</span>
+        <span class="s">"Authorization"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"Bearer {access-token}"</span><span class="p">},</span>
+    <span class="p">}</span>
+
+    <span class="n">data</span> <span class="o">:=</span> <span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span>
+    <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"https://elections.hse.ru/elections/becomeCandidate/{electionId}"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="n">req</span><span class="o">.</span><span class="n">Header</span> <span class="o">=</span> <span class="n">headers</span>
+
+    <span class="n">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span>
+    <span class="n">resp</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+    <span class="c">// ...</span>
+<span class="p">}</span>
+
+</code></pre></div>
+<p><code>POST /elections/becomeCandidate/{electionId}</code></p>
+
+<p><em>Стать кандидатом/редактировать профиль</em></p>
+
+<p>Стать кандидатом в выборах/редактировать профиль</p>
+
+<h3 id="post__elections_becomecandidate_{electionid}-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>electionId</td>
+<td>path</td>
+<td>integer(int64)</td>
+<td>true</td>
+<td>Выборы</td>
+</tr>
+<tr>
+<td>candidate</td>
+<td>query</td>
+<td><a href="#schemacandidaterequest">CandidateRequest</a></td>
+<td>true</td>
+<td>Кандидат</td>
+</tr>
+</tbody></table>
+
+<h3 id="post__elections_becomecandidate_{electionid}-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Успешно</td>
+<td>None</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>Невалидно</td>
+<td>None</td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+elk_auth ( Scopes: elector )
+</aside>
 <h2 id='get__elections_all'>get__elections_all</h2>
 <blockquote>
 <p>Code samples</p>
@@ -634,36 +823,7 @@ curl <span class="nt">-X</span> GET https://elections.hse.ru/elections/all <span
 <p>200 Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Выборы в КпЦ"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"isRunoff"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"mandates"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"isForNearForeign"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"isForFarForeign"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"acceptedCampusesIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="mi">2</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"acceptedCouncilOrganizationsIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="mi">2</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"acceptedFacultiesIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="mi">2</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"acceptedDormitoriesIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="mi">2</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"acceptedCities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"Москва"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"Пермь"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"finishTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"waiting"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="mi">0</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <h3 id="get__elections_all-responses">Responses</h3>
@@ -679,147 +839,12 @@ curl <span class="nt">-X</span> GET https://elections.hse.ru/elections/all <span
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Возвращает выборы</td>
+<td>Возвращает ID выборов</td>
 <td>Inline</td>
 </tr>
 </tbody></table>
 
 <h3 id="get__elections_all-responseschema">Response Schema</h3>
-
-<p>Status Code <strong>200</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><em>anonymous</em></td>
-<td>[<a href="#schemaelection">Election</a>]</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» name</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» isRunoff</td>
-<td>boolean</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» mandates</td>
-<td>integer(int64)</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» isForNearForeign</td>
-<td>boolean</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» isForFarForeign</td>
-<td>boolean</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» acceptedCampusesIds</td>
-<td>[integer]</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» acceptedCouncilOrganizationsIds</td>
-<td>[integer]</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» acceptedFacultiesIds</td>
-<td>[integer]</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» acceptedDormitoriesIds</td>
-<td>[integer]</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» acceptedCities</td>
-<td>[string]</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» startTime</td>
-<td>string(date-time)</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» finishTime</td>
-<td>string(date-time)</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» status</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-</tbody></table>
-<h4 id='enumerated-values-2'>Enumerated Values</h4>
-<table><thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>waiting</td>
-</tr>
-<tr>
-<td>status</td>
-<td>started</td>
-</tr>
-<tr>
-<td>status</td>
-<td>finished</td>
-</tr>
-<tr>
-<td>status</td>
-<td>results</td>
-</tr>
-</tbody></table>
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -984,10 +1009,6 @@ curl <span class="nt">-X</span> GET https://elections.hse.ru/elections/get/<span
   </span><span class="nl">"mandates"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"isForNearForeign"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"isForFarForeign"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"acceptedCampusesIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="mi">2</span><span class="w">
-  </span><span class="p">],</span><span class="w">
   </span><span class="nl">"acceptedCouncilOrganizationsIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="mi">2</span><span class="w">
@@ -1000,13 +1021,9 @@ curl <span class="nt">-X</span> GET https://elections.hse.ru/elections/get/<span
     </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="mi">2</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"acceptedCities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"Москва"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Пермь"</span><span class="w">
-  </span><span class="p">],</span><span class="w">
   </span><span class="nl">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"finishTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"waiting"</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"draft"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="get__elections_get_{electionid}-responses">Responses</h3>
@@ -1192,8 +1209,11 @@ curl <span class="nt">-X</span> GET https://elections.hse.ru/elections/getCandid
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"studentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Программа"</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Имя"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"photoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://img.com/img.png"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Программа"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"approved"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
@@ -1210,7 +1230,7 @@ curl <span class="nt">-X</span> GET https://elections.hse.ru/elections/getCandid
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Возвращает выборы</td>
+<td>Возвращает кандидатов</td>
 <td>Inline</td>
 </tr>
 <tr>
@@ -1242,8 +1262,22 @@ curl <span class="nt">-X</span> GET https://elections.hse.ru/elections/getCandid
 <td>none</td>
 </tr>
 <tr>
-<td>» studentId</td>
+<td>» id</td>
 <td>integer(int64)</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» name</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» photoUrl</td>
+<td>string(url)</td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -1251,7 +1285,14 @@ curl <span class="nt">-X</span> GET https://elections.hse.ru/elections/getCandid
 <tr>
 <td>» description</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» approved</td>
+<td>boolean</td>
+<td>true</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -1591,7 +1632,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/vote/<sp
 <td>query</td>
 <td>string</td>
 <td>false</td>
-<td>Зашифрованная публичным ключом строка JSON: в случае runoff [candidateId, candidateId] в порядке предпочтения, иначе - [[candidateId, voicesCount], [candidateId, voicesCount]]</td>
+<td>Зашифрованная публичным ключом строка JSON: в случае runoff {random: &#39;293029302&#39;, voice: [candidateId, candidateId]} в порядке предпочтения, иначе - {random: &#39;293029302&#39;, voice: [[candidateId, voicesCount], [candidateId, voicesCount]]}</td>
 </tr>
 </tbody></table>
 
@@ -1614,7 +1655,13 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/vote/<sp
 <tr>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>Неверно</td>
+<td>Голосование не началось/уже закончилось</td>
+<td>None</td>
+</tr>
+<tr>
+<td>409</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.8">Conflict</a></td>
+<td>Голос уже был принят</td>
 <td>None</td>
 </tr>
 </tbody></table>
@@ -1623,16 +1670,16 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/vote/<sp
 To perform this operation, you must be authenticated by means of one of the following methods:
 elk_auth ( Scopes: elect )
 </aside>
-<h2 id='post_elections_publickey-electionid'>post_<em>elections_publicKey</em>{electionId}</h2>
+<h2 id='get_elections_publickey-electionid'>get_<em>elections_publicKey</em>{electionId}</h2>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/publicKey/<span class="o">{</span>electionId<span class="o">}</span> <span class="se">\</span>
+curl <span class="nt">-X</span> GET https://elections.hse.ru/elections/publicKey/<span class="o">{</span>electionId<span class="o">}</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://elections.hse.ru/elections/publicKey/{electionId}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://elections.hse.ru/elections/publicKey/{electionId}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">elections.hse.ru</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 
@@ -1644,7 +1691,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/publicKe
 
 <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://elections.hse.ru/elections/publicKey/{electionId}</span><span class="dl">'</span><span class="p">,</span>
 <span class="p">{</span>
-  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
 
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">})</span>
@@ -1662,7 +1709,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/publicKe
   <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://elections.hse.ru/elections/publicKey/{electionId}'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://elections.hse.ru/elections/publicKey/{electionId}'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
   <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
 
@@ -1674,7 +1721,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/publicKe
   <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://elections.hse.ru/elections/publicKey/{electionId}'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://elections.hse.ru/elections/publicKey/{electionId}'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 
@@ -1693,7 +1740,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/publicKe
 <span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
 
 <span class="k">try</span> <span class="p">{</span>
-    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="nf">request</span><span class="p">(</span><span class="s1">'POST'</span><span class="p">,</span><span class="s1">'https://elections.hse.ru/elections/publicKey/{electionId}'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="nf">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'https://elections.hse.ru/elections/publicKey/{electionId}'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
         <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
         <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
        <span class="p">)</span>
@@ -1709,7 +1756,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/publicKe
 
 </code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="no">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://elections.hse.ru/elections/publicKey/{electionId}"</span><span class="o">);</span>
 <span class="nc">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
-<span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
+<span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
 <span class="nc">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span>
     <span class="k">new</span> <span class="nf">InputStreamReader</span><span class="o">(</span><span class="n">con</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
@@ -1736,7 +1783,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/publicKe
     <span class="p">}</span>
 
     <span class="n">data</span> <span class="o">:=</span> <span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span>
-    <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"https://elections.hse.ru/elections/publicKey/{electionId}"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"https://elections.hse.ru/elections/publicKey/{electionId}"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
     <span class="n">req</span><span class="o">.</span><span class="n">Header</span> <span class="o">=</span> <span class="n">headers</span>
 
     <span class="n">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span>
@@ -1745,11 +1792,11 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/publicKe
 <span class="p">}</span>
 
 </code></pre></div>
-<p><code>POST /elections/publicKey/{electionId}</code></p>
+<p><code>GET /elections/publicKey/{electionId}</code></p>
 
 <p><em>Получить публичный ключ</em></p>
 
-<h3 id="post__elections_publickey_{electionid}-parameters">Parameters</h3>
+<h3 id="get__elections_publickey_{electionid}-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -1776,7 +1823,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/publicKe
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"string"</span><span class="w">
 </span></code></pre></div>
-<h3 id="post__elections_publickey_{electionid}-responses">Responses</h3>
+<h3 id="get__elections_publickey_{electionid}-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -1790,6 +1837,12 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/publicKe
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Возвращает публичный ключ</td>
+<td>string</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>Ключ ещё не загружен</td>
 <td>string</td>
 </tr>
 </tbody></table>
@@ -2161,10 +2214,10 @@ elk_auth ( Scopes: admin )
 <p>Code samples</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/create?election<span class="o">=</span>name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCampusesIds,1%2C2,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,acceptedCities,%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%D0%9F%D0%B5%D1%80%D0%BC%D1%8C,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,waiting <span class="se">\</span>
+curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/create?election<span class="o">=</span>name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://elections.hse.ru/elections/create?election=name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCampusesIds,1%2C2,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,acceptedCities,%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%D0%9F%D0%B5%D1%80%D0%BC%D1%8C,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,waiting</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://elections.hse.ru/elections/create?election=name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">elections.hse.ru</span>
 
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
@@ -2172,7 +2225,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/create?e
   <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">Bearer {access-token}</span><span class="dl">'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://elections.hse.ru/elections/create?election=name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCampusesIds,1%2C2,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,acceptedCities,%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%D0%9F%D0%B5%D1%80%D0%BC%D1%8C,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,waiting</span><span class="dl">'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://elections.hse.ru/elections/create?election=name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft</span><span class="dl">'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
 
@@ -2210,10 +2263,6 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/create?e
   <span class="s">"mandates"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
   <span class="s">"isForNearForeign"</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
   <span class="s">"isForFarForeign"</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
-  <span class="s">"acceptedCampusesIds"</span><span class="p">:</span> <span class="p">[</span>
-    <span class="mi">1</span><span class="p">,</span>
-    <span class="mi">2</span>
-  <span class="p">],</span>
   <span class="s">"acceptedCouncilOrganizationsIds"</span><span class="p">:</span> <span class="p">[</span>
     <span class="mi">1</span><span class="p">,</span>
     <span class="mi">2</span>
@@ -2226,13 +2275,9 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/create?e
     <span class="mi">1</span><span class="p">,</span>
     <span class="mi">2</span>
   <span class="p">],</span>
-  <span class="s">"acceptedCities"</span><span class="p">:</span> <span class="p">[</span>
-    <span class="s">"Москва"</span><span class="p">,</span>
-    <span class="s">"Пермь"</span>
-  <span class="p">],</span>
   <span class="s">"startTime"</span><span class="p">:</span> <span class="s">"2019-08-24T14:15:22Z"</span><span class="p">,</span>
   <span class="s">"finishTime"</span><span class="p">:</span> <span class="s">"2019-08-24T14:15:22Z"</span><span class="p">,</span>
-  <span class="s">"status"</span><span class="p">:</span> <span class="s">"waiting"</span>
+  <span class="s">"status"</span><span class="p">:</span> <span class="s">"draft"</span>
 <span class="p">}</span>
 <span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
@@ -2266,7 +2311,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/create?e
 
  <span class="c1">// ...</span>
 
-</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="no">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://elections.hse.ru/elections/create?election=name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCampusesIds,1%2C2,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,acceptedCities,%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%D0%9F%D0%B5%D1%80%D0%BC%D1%8C,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,waiting"</span><span class="o">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="no">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://elections.hse.ru/elections/create?election=name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft"</span><span class="o">);</span>
 <span class="nc">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -2357,15 +2402,15 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/create?e
 To perform this operation, you must be authenticated by means of one of the following methods:
 elk_auth ( Scopes: admin )
 </aside>
-<h2 id='post_elections_addcandidate-electionid'>post_<em>elections_addCandidate</em>{electionId}</h2>
+<h2 id='post_elections_approvecandidate-candidateid'>post_<em>elections_approveCandidate</em>{candidateId}</h2>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/addCandidate/<span class="o">{</span>electionId<span class="o">}</span>?candidate<span class="o">=</span>studentId,1,description,%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0 <span class="se">\</span>
+curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/approveCandidate/<span class="o">{</span>candidateId<span class="o">}</span>?approve<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://elections.hse.ru/elections/addCandidate/{electionId}?candidate=studentId,1,description,%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://elections.hse.ru/elections/approveCandidate/{candidateId}?approve=true</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">elections.hse.ru</span>
 
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
@@ -2373,7 +2418,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/addCandi
   <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">Bearer {access-token}</span><span class="dl">'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://elections.hse.ru/elections/addCandidate/{electionId}?candidate=studentId,1,description,%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0</span><span class="dl">'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://elections.hse.ru/elections/approveCandidate/{candidateId}?approve=true</span><span class="dl">'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
 
@@ -2392,9 +2437,9 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/addCandi
   <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://elections.hse.ru/elections/addCandidate/{electionId}'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://elections.hse.ru/elections/approveCandidate/{candidateId}'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
-  <span class="s1">'candidate'</span> <span class="o">=&gt;</span> <span class="s1">'[Candidate](#schemacandidate)'</span>
+  <span class="s1">'approve'</span> <span class="o">=&gt;</span> <span class="s1">'boolean'</span>
 <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
 
 <span class="nb">p</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
@@ -2404,11 +2449,8 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/addCandi
   <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://elections.hse.ru/elections/addCandidate/{electionId}'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
-  <span class="s">'candidate'</span><span class="p">:</span> <span class="p">{</span>
-  <span class="s">"studentId"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-  <span class="s">"description"</span><span class="p">:</span> <span class="s">"Программа"</span>
-<span class="p">}</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://elections.hse.ru/elections/approveCandidate/{candidateId}'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+  <span class="s">'approve'</span><span class="p">:</span> <span class="s">'true'</span>
 <span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
@@ -2427,7 +2469,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/addCandi
 <span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
 
 <span class="k">try</span> <span class="p">{</span>
-    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="nf">request</span><span class="p">(</span><span class="s1">'POST'</span><span class="p">,</span><span class="s1">'https://elections.hse.ru/elections/addCandidate/{electionId}'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="nf">request</span><span class="p">(</span><span class="s1">'POST'</span><span class="p">,</span><span class="s1">'https://elections.hse.ru/elections/approveCandidate/{candidateId}'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
         <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
         <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
        <span class="p">)</span>
@@ -2441,7 +2483,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/addCandi
 
  <span class="c1">// ...</span>
 
-</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="no">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://elections.hse.ru/elections/addCandidate/{electionId}?candidate=studentId,1,description,%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0"</span><span class="o">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="no">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://elections.hse.ru/elections/approveCandidate/{candidateId}?approve=true"</span><span class="o">);</span>
 <span class="nc">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -2469,7 +2511,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/addCandi
     <span class="p">}</span>
 
     <span class="n">data</span> <span class="o">:=</span> <span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span>
-    <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"https://elections.hse.ru/elections/addCandidate/{electionId}"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"https://elections.hse.ru/elections/approveCandidate/{candidateId}"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
     <span class="n">req</span><span class="o">.</span><span class="n">Header</span> <span class="o">=</span> <span class="n">headers</span>
 
     <span class="n">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span>
@@ -2478,13 +2520,13 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/addCandi
 <span class="p">}</span>
 
 </code></pre></div>
-<p><code>POST /elections/addCandidate/{electionId}</code></p>
+<p><code>POST /elections/approveCandidate/{candidateId}</code></p>
 
-<p><em>Добавить кандидата в выборы</em></p>
+<p><em>Одобрить/отклонить кандидата</em></p>
 
-<p>Добавить кандидата в выборы</p>
+<p>Одобрить/отклонить кандидата</p>
 
-<h3 id="post__elections_addcandidate_{electionid}-parameters">Parameters</h3>
+<h3 id="post__elections_approvecandidate_{candidateid}-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -2496,22 +2538,22 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/addCandi
 </tr>
 </thead><tbody>
 <tr>
-<td>electionId</td>
+<td>candidateId</td>
 <td>path</td>
 <td>integer(int64)</td>
 <td>true</td>
-<td>Выборы</td>
+<td>Кандидат в выборы</td>
 </tr>
 <tr>
-<td>candidate</td>
+<td>approve</td>
 <td>query</td>
-<td><a href="#schemacandidate">Candidate</a></td>
+<td>boolean</td>
 <td>true</td>
-<td>Кандидат</td>
+<td>Одобрить/отклонить заявку</td>
 </tr>
 </tbody></table>
 
-<h3 id="post__elections_addcandidate_{electionid}-responses">Responses</h3>
+<h3 id="post__elections_approvecandidate_{candidateid}-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -2539,30 +2581,25 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/addCandi
 To perform this operation, you must be authenticated by means of one of the following methods:
 elk_auth ( Scopes: admin )
 </aside>
-
-<h1 id="swagger-smart-elections-dictionary">dictionary</h1>
-
-<p>Справочники</p>
-<h2 id='get__dictionaries_campus'>get__dictionaries_campus</h2>
+<h2 id='post_elections_publish-electionid'>post_<em>elections_publish</em>{electionId}</h2>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl <span class="nt">-X</span> GET https://elections.hse.ru/dictionaries/campus <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
+curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/publish/<span class="o">{</span>electionId<span class="o">}</span>?isDraft<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://elections.hse.ru/dictionaries/campus</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://elections.hse.ru/elections/publish/{electionId}?isDraft=true</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">elections.hse.ru</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">Bearer {access-token}</span><span class="dl">'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://elections.hse.ru/dictionaries/campus</span><span class="dl">'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://elections.hse.ru/elections/publish/{electionId}?isDraft=true</span><span class="dl">'</span><span class="p">,</span>
 <span class="p">{</span>
-  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
 
   <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
 <span class="p">})</span>
@@ -2576,21 +2613,24 @@ curl <span class="nt">-X</span> GET https://elections.hse.ru/dictionaries/campus
 <span class="nb">require</span> <span class="s1">'json'</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://elections.hse.ru/dictionaries/campus'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://elections.hse.ru/elections/publish/{electionId}'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
-  <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
+  <span class="s1">'isDraft'</span> <span class="o">=&gt;</span> <span class="s1">'boolean'</span>
+<span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
 
 <span class="nb">p</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://elections.hse.ru/dictionaries/campus'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://elections.hse.ru/elections/publish/{electionId}'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+  <span class="s">'isDraft'</span><span class="p">:</span> <span class="s">'true'</span>
+<span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 
@@ -2599,7 +2639,7 @@ curl <span class="nt">-X</span> GET https://elections.hse.ru/dictionaries/campus
 <span class="k">require</span> <span class="s1">'vendor/autoload.php'</span><span class="p">;</span>
 
 <span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
-    <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span><span class="p">,</span>
 <span class="p">);</span>
 
 <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="err">\</span><span class="nf">GuzzleHttp\Client</span><span class="p">();</span>
@@ -2608,7 +2648,7 @@ curl <span class="nt">-X</span> GET https://elections.hse.ru/dictionaries/campus
 <span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
 
 <span class="k">try</span> <span class="p">{</span>
-    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="nf">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'https://elections.hse.ru/dictionaries/campus'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="nf">request</span><span class="p">(</span><span class="s1">'POST'</span><span class="p">,</span><span class="s1">'https://elections.hse.ru/elections/publish/{electionId}'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
         <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
         <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
        <span class="p">)</span>
@@ -2622,9 +2662,9 @@ curl <span class="nt">-X</span> GET https://elections.hse.ru/dictionaries/campus
 
  <span class="c1">// ...</span>
 
-</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="no">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://elections.hse.ru/dictionaries/campus"</span><span class="o">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="no">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://elections.hse.ru/elections/publish/{electionId}?isDraft=true"</span><span class="o">);</span>
 <span class="nc">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
-<span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
+<span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
 <span class="nc">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span>
     <span class="k">new</span> <span class="nf">InputStreamReader</span><span class="o">(</span><span class="n">con</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
@@ -2646,11 +2686,11 @@ curl <span class="nt">-X</span> GET https://elections.hse.ru/dictionaries/campus
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
 
     <span class="n">headers</span> <span class="o">:=</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="p">{</span>
-        <span class="s">"Accept"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json"</span><span class="p">},</span>
+        <span class="s">"Authorization"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"Bearer {access-token}"</span><span class="p">},</span>
     <span class="p">}</span>
 
     <span class="n">data</span> <span class="o">:=</span> <span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span>
-    <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"https://elections.hse.ru/dictionaries/campus"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"https://elections.hse.ru/elections/publish/{electionId}"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
     <span class="n">req</span><span class="o">.</span><span class="n">Header</span> <span class="o">=</span> <span class="n">headers</span>
 
     <span class="n">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span>
@@ -2659,25 +2699,40 @@ curl <span class="nt">-X</span> GET https://elections.hse.ru/dictionaries/campus
 <span class="p">}</span>
 
 </code></pre></div>
-<p><code>GET /dictionaries/campus</code></p>
+<p><code>POST /elections/publish/{electionId}</code></p>
 
-<p><em>Кампусы</em></p>
+<p><em>Установить видимость выборов</em></p>
 
-<p>Возвращает кампусы</p>
+<p>Установить видимость выборов (draft)</p>
 
-<blockquote>
-<p>Example responses</p>
+<h3 id="post__elections_publish_{electionid}-parameters">Parameters</h3>
 
-<p>200 Response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Москва"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre></div>
-<h3 id="get__dictionaries_campus-responses">Responses</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>electionId</td>
+<td>path</td>
+<td>integer(int64)</td>
+<td>true</td>
+<td>ID</td>
+</tr>
+<tr>
+<td>isDraft</td>
+<td>query</td>
+<td>boolean</td>
+<td>true</td>
+<td>Является ли черновиком</td>
+</tr>
+</tbody></table>
+
+<h3 id="post__elections_publish_{electionid}-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -2690,50 +2745,204 @@ curl <span class="nt">-X</span> GET https://elections.hse.ru/dictionaries/campus
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Возвращает кампусы</td>
-<td>Inline</td>
+<td>Выполнено</td>
+<td>None</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>Невалидный ID</td>
+<td>None</td>
 </tr>
 </tbody></table>
 
-<h3 id="get__dictionaries_campus-responseschema">Response Schema</h3>
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+elk_auth ( Scopes: admin )
+</aside>
+<h2 id='post_elections_registration-electionid'>post_<em>elections_registration</em>{electionId}</h2>
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/registration/<span class="o">{</span>electionId<span class="o">}</span>?isRegistrationOpen<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-<p>Status Code <strong>200</strong></p>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://elections.hse.ru/elections/registration/{electionId}?isRegistrationOpen=true</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">elections.hse.ru</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">Bearer {access-token}</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://elections.hse.ru/elections/registration/{electionId}?isRegistrationOpen=true</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<span class="nb">require</span> <span class="s1">'json'</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span>
+<span class="p">}</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://elections.hse.ru/elections/registration/{electionId}'</span><span class="p">,</span>
+  <span class="ss">params: </span><span class="p">{</span>
+  <span class="s1">'isRegistrationOpen'</span> <span class="o">=&gt;</span> <span class="s1">'boolean'</span>
+<span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
+
+<span class="nb">p</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {access-token}'</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://elections.hse.ru/elections/registration/{electionId}'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+  <span class="s">'isRegistrationOpen'</span><span class="p">:</span> <span class="s">'true'</span>
+<span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="k">require</span> <span class="s1">'vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span><span class="p">,</span>
+<span class="p">);</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="err">\</span><span class="nf">GuzzleHttp\Client</span><span class="p">();</span>
+
+<span class="c1">// Define array of request body.</span>
+<span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="nf">request</span><span class="p">(</span><span class="s1">'POST'</span><span class="p">,</span><span class="s1">'https://elections.hse.ru/elections/registration/{electionId}'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
+        <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
+       <span class="p">)</span>
+    <span class="p">);</span>
+    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getBody</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">getContents</span><span class="p">());</span>
+ <span class="p">}</span>
+ <span class="k">catch</span> <span class="p">(</span><span class="err">\</span><span class="nc">GuzzleHttp\Exception\BadResponseException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// handle exception or api errors.</span>
+    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="nf">getMessage</span><span class="p">());</span>
+ <span class="p">}</span>
+
+ <span class="c1">// ...</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="no">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://elections.hse.ru/elections/registration/{electionId}?isRegistrationOpen=true"</span><span class="o">);</span>
+<span class="nc">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+<span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
+<span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
+<span class="nc">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span>
+    <span class="k">new</span> <span class="nf">InputStreamReader</span><span class="o">(</span><span class="n">con</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
+<span class="nc">String</span> <span class="n">inputLine</span><span class="o">;</span>
+<span class="nc">StringBuffer</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuffer</span><span class="o">();</span>
+<span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">response</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+       <span class="s">"bytes"</span>
+       <span class="s">"net/http"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="n">headers</span> <span class="o">:=</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="p">{</span>
+        <span class="s">"Authorization"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"Bearer {access-token}"</span><span class="p">},</span>
+    <span class="p">}</span>
+
+    <span class="n">data</span> <span class="o">:=</span> <span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span>
+    <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"https://elections.hse.ru/elections/registration/{electionId}"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="n">req</span><span class="o">.</span><span class="n">Header</span> <span class="o">=</span> <span class="n">headers</span>
+
+    <span class="n">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span>
+    <span class="n">resp</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+    <span class="c">// ...</span>
+<span class="p">}</span>
+
+</code></pre></div>
+<p><code>POST /elections/registration/{electionId}</code></p>
+
+<p><em>Открыт ли сбор заявок</em></p>
+
+<p>Открыт ли сбор заявок</p>
+
+<h3 id="post__elections_registration_{electionid}-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Name</th>
+<th>In</th>
 <th>Type</th>
 <th>Required</th>
-<th>Restrictions</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td><em>anonymous</em></td>
-<td>[<a href="#schemacampus">Campus</a>]</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» id</td>
+<td>electionId</td>
+<td>path</td>
 <td>integer(int64)</td>
 <td>true</td>
-<td>none</td>
-<td>none</td>
+<td>ID</td>
 </tr>
 <tr>
-<td>» name</td>
-<td>string</td>
+<td>isRegistrationOpen</td>
+<td>query</td>
+<td>boolean</td>
 <td>true</td>
-<td>none</td>
-<td>none</td>
+<td>Открыт ли сбор заявок</td>
 </tr>
 </tbody></table>
 
-<aside class="success">
-This operation does not require authentication
+<h3 id="post__elections_registration_{electionid}-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Выполнено</td>
+<td>None</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>Невалидный ID</td>
+<td>None</td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+elk_auth ( Scopes: admin )
 </aside>
+
+<h1 id="swagger-smart-elections-dictionary">dictionary</h1>
+
+<p>Справочники</p>
 <h2 id='get__dictionaries_faculty'>get__dictionaries_faculty</h2>
 <blockquote>
 <p>Code samples</p>
@@ -2864,8 +3073,7 @@ curl <span class="nt">-X</span> GET https://elections.hse.ru/dictionaries/facult
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Факультет компьютерных наук"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"campusId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Факультет компьютерных наук"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
@@ -2917,13 +3125,6 @@ curl <span class="nt">-X</span> GET https://elections.hse.ru/dictionaries/facult
 <tr>
 <td>» name</td>
 <td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» campusId</td>
-<td>integer(int64)</td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -3063,8 +3264,7 @@ curl <span class="nt">-X</span> GET https://elections.hse.ru/dictionaries/dormit
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Общежитие №5"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"campusId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Общежитие №5"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
@@ -3120,13 +3320,6 @@ curl <span class="nt">-X</span> GET https://elections.hse.ru/dictionaries/dormit
 <td>none</td>
 <td>none</td>
 </tr>
-<tr>
-<td>» campusId</td>
-<td>integer(int64)</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
 </tbody></table>
 
 <aside class="success">
@@ -3143,11 +3336,8 @@ This operation does not require authentication
 <a id="tocselector"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Иван"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Иванов"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"middlename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Иванович"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"fullname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Иванов Иван Иванович"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iiivanov@edu.hse.ru"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"campusId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="nl">"isDormitoryStudent"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"dormitoryId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="nl">"facultyIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -3161,8 +3351,7 @@ This operation does not require authentication
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"isPostGraduate"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"isNearForeign"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"isFarForeign"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Moscow"</span><span class="w">
+  </span><span class="nl">"isFarForeign"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div><h3 id='properties'>Properties</h3>
@@ -3183,21 +3372,7 @@ This operation does not require authentication
 <td>none</td>
 </tr>
 <tr>
-<td>firstname</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>lastname</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>middlename</td>
+<td>fullname</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
@@ -3207,13 +3382,6 @@ This operation does not require authentication
 <td>email</td>
 <td>string(email)</td>
 <td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>campusId</td>
-<td>integer(int64)</td>
-<td>false</td>
 <td>none</td>
 <td>none</td>
 </tr>
@@ -3273,26 +3441,19 @@ This operation does not require authentication
 <td>none</td>
 <td>none</td>
 </tr>
-<tr>
-<td>city</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
 </tbody></table>
 
-<h2 id="tocS_Campus">Campus</h2>
+<h2 id="tocS_Faculty">Faculty</h2>
 
 <!-- backwards compatibility -->
 
-<p><a id="schemacampus"></a>
-<a id="schema_Campus"></a>
-<a id="tocScampus"></a>
-<a id="tocscampus"></a></p>
+<p><a id="schemafaculty"></a>
+<a id="schema_Faculty"></a>
+<a id="tocSfaculty"></a>
+<a id="tocsfaculty"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Москва"</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Факультет компьютерных наук"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div><h3 id='properties-2'>Properties</h3>
@@ -3321,18 +3482,17 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 id="tocS_Faculty">Faculty</h2>
+<h2 id="tocS_Dormitory">Dormitory</h2>
 
 <!-- backwards compatibility -->
 
-<p><a id="schemafaculty"></a>
-<a id="schema_Faculty"></a>
-<a id="tocSfaculty"></a>
-<a id="tocsfaculty"></a></p>
+<p><a id="schemadormitory"></a>
+<a id="schema_Dormitory"></a>
+<a id="tocSdormitory"></a>
+<a id="tocsdormitory"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Факультет компьютерных наук"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"campusId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Общежитие №5"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div><h3 id='properties-3'>Properties</h3>
@@ -3359,27 +3519,19 @@ This operation does not require authentication
 <td>none</td>
 <td>none</td>
 </tr>
-<tr>
-<td>campusId</td>
-<td>integer(int64)</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
 </tbody></table>
 
-<h2 id="tocS_Dormitory">Dormitory</h2>
+<h2 id="tocS_CouncilOrganization">CouncilOrganization</h2>
 
 <!-- backwards compatibility -->
 
-<p><a id="schemadormitory"></a>
-<a id="schema_Dormitory"></a>
-<a id="tocSdormitory"></a>
-<a id="tocsdormitory"></a></p>
+<p><a id="schemacouncilorganization"></a>
+<a id="schema_CouncilOrganization"></a>
+<a id="tocScouncilorganization"></a>
+<a id="tocscouncilorganization"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Общежитие №5"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"campusId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Коммитет по цифровизации"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div><h3 id='properties-4'>Properties</h3>
@@ -3406,60 +3558,6 @@ This operation does not require authentication
 <td>none</td>
 <td>none</td>
 </tr>
-<tr>
-<td>campusId</td>
-<td>integer(int64)</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-</tbody></table>
-
-<h2 id="tocS_CouncilOrganization">CouncilOrganization</h2>
-
-<!-- backwards compatibility -->
-
-<p><a id="schemacouncilorganization"></a>
-<a id="schema_CouncilOrganization"></a>
-<a id="tocScouncilorganization"></a>
-<a id="tocscouncilorganization"></a></p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Коммитет по цифровизации"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"campusId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre></div><h3 id='properties-5'>Properties</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>integer(int64)</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>name</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>campusId</td>
-<td>integer(int64)</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
 </tbody></table>
 
 <h2 id="tocS_Election">Election</h2>
@@ -3476,10 +3574,6 @@ This operation does not require authentication
   </span><span class="nl">"mandates"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"isForNearForeign"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"isForFarForeign"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"acceptedCampusesIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="mi">2</span><span class="w">
-  </span><span class="p">],</span><span class="w">
   </span><span class="nl">"acceptedCouncilOrganizationsIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="mi">2</span><span class="w">
@@ -3492,16 +3586,12 @@ This operation does not require authentication
     </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="mi">2</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"acceptedCities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"Москва"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Пермь"</span><span class="w">
-  </span><span class="p">],</span><span class="w">
   </span><span class="nl">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"finishTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"waiting"</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"draft"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-6'>Properties</h3>
+</span></code></pre></div><h3 id='properties-5'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3547,13 +3637,6 @@ This operation does not require authentication
 <td>none</td>
 </tr>
 <tr>
-<td>acceptedCampusesIds</td>
-<td>[integer]</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
 <td>acceptedCouncilOrganizationsIds</td>
 <td>[integer]</td>
 <td>false</td>
@@ -3570,13 +3653,6 @@ This operation does not require authentication
 <tr>
 <td>acceptedDormitoriesIds</td>
 <td>[integer]</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>acceptedCities</td>
-<td>[string]</td>
 <td>false</td>
 <td>none</td>
 <td>none</td>
@@ -3603,13 +3679,21 @@ This operation does not require authentication
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-3'>Enumerated Values</h4>
+<h4 id='enumerated-values-2'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
 <th>Value</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>status</td>
+<td>draft</td>
+</tr>
+<tr>
+<td>status</td>
+<td>created</td>
+</tr>
 <tr>
 <td>status</td>
 <td>waiting</td>
@@ -3621,6 +3705,10 @@ This operation does not require authentication
 <tr>
 <td>status</td>
 <td>finished</td>
+</tr>
+<tr>
+<td>status</td>
+<td>decrypted</td>
 </tr>
 <tr>
 <td>status</td>
@@ -3643,7 +3731,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-7'>Properties</h3>
+</span></code></pre></div><h3 id='properties-6'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3685,7 +3773,71 @@ This operation does not require authentication
 <a id="tocScandidate"></a>
 <a id="tocscandidate"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"studentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Имя"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"photoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://img.com/img.png"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Программа"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"approved"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-7'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer(int64)</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>photoUrl</td>
+<td>string(url)</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>approved</td>
+<td>boolean</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_CandidateRequest">CandidateRequest</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemacandidaterequest"></a>
+<a id="schema_CandidateRequest"></a>
+<a id="tocScandidaterequest"></a>
+<a id="tocscandidaterequest"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Имя"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"photoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://img.com/img.png"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Программа"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -3700,8 +3852,15 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>studentId</td>
-<td>integer(int64)</td>
+<td>name</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>photoUrl</td>
+<td>string(url)</td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -3709,7 +3868,7 @@ This operation does not require authentication
 <tr>
 <td>description</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>none</td>
 <td>none</td>
 </tr>
