@@ -1,5 +1,5 @@
 ---
-title: Swagger Smart Elections v0.0.5
+title: Swagger Smart Elections v0.0.6
 language_tabs:
   - shell: Shell
   - http: HTTP
@@ -20,7 +20,7 @@ headingLevel: 2
 
 <!-- Generator: Widdershins v4.0.1 -->
 
-<h1 id="swagger-smart-elections">Swagger Smart Elections v0.0.5</h1>
+<h1 id="swagger-smart-elections">Swagger Smart Elections v0.0.6</h1>
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
@@ -30,16 +30,287 @@ Base URLs:
 
 # Authentication
 
-- oAuth2 authentication. 
+- HTTP Authentication, scheme: bearer 
 
-    - Flow: implicit
-    - Authorization URL = [https://elections.hse.ru/auth/elk](https://elections.hse.ru/auth/elk)
+<h1 id="swagger-smart-elections-auth">auth</h1>
 
-|Scope|Scope Description|
-|---|---|
-|elect|view elections|
-|observe|set keys|
-|admin|create and manage elections|
+Инструментарий для авторизации
+
+## get__auth_elk
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET https://elections.hse.ru/auth/elk
+
+```
+
+```http
+GET https://elections.hse.ru/auth/elk HTTP/1.1
+Host: elections.hse.ru
+
+```
+
+```javascript
+
+fetch('https://elections.hse.ru/auth/elk',
+{
+  method: 'GET'
+
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+result = RestClient.get 'https://elections.hse.ru/auth/elk',
+  params: {
+  }
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+
+r = requests.get('https://elections.hse.ru/auth/elk')
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','https://elections.hse.ru/auth/elk', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("https://elections.hse.ru/auth/elk");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "https://elections.hse.ru/auth/elk", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /auth/elk`
+
+*Авторизация*
+
+Редирект на авторизацию
+
+<h3 id="get__auth_elk-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|303|[See Other](https://tools.ietf.org/html/rfc7231#section-6.4.4)|Редирект на ЕЛК|None|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## post__auth_redirect
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST https://elections.hse.ru/auth/redirect?access_token=string
+
+```
+
+```http
+POST https://elections.hse.ru/auth/redirect?access_token=string HTTP/1.1
+Host: elections.hse.ru
+
+```
+
+```javascript
+
+fetch('https://elections.hse.ru/auth/redirect?access_token=string',
+{
+  method: 'POST'
+
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+result = RestClient.post 'https://elections.hse.ru/auth/redirect',
+  params: {
+  'access_token' => 'string'
+}
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+
+r = requests.post('https://elections.hse.ru/auth/redirect', params={
+  'access_token': 'string'
+})
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('POST','https://elections.hse.ru/auth/redirect', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("https://elections.hse.ru/auth/redirect?access_token=string");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("POST", "https://elections.hse.ru/auth/redirect", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`POST /auth/redirect`
+
+*Возврат из ЕЛК*
+
+Возврат из ЕЛК
+
+<h3 id="post__auth_redirect-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|access_token|query|string|true|JWT-токен|
+
+<h3 id="post__auth_redirect-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Токен принят и сохранён|None|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Ошибка|None|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
 
 <h1 id="swagger-smart-elections-elector">elector</h1>
 
@@ -208,6 +479,183 @@ func main() {
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Успешно|None|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Невалидно|None|
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+elk_auth ( Scopes: elector )
+</aside>
+
+## get__elections_myCandidateStatus_{electionId}
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET https://elections.hse.ru/elections/myCandidateStatus/{electionId} \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer {access-token}'
+
+```
+
+```http
+GET https://elections.hse.ru/elections/myCandidateStatus/{electionId} HTTP/1.1
+Host: elections.hse.ru
+Accept: application/json
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'Authorization':'Bearer {access-token}'
+};
+
+fetch('https://elections.hse.ru/elections/myCandidateStatus/{electionId}',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'Authorization' => 'Bearer {access-token}'
+}
+
+result = RestClient.get 'https://elections.hse.ru/elections/myCandidateStatus/{electionId}',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'Authorization': 'Bearer {access-token}'
+}
+
+r = requests.get('https://elections.hse.ru/elections/myCandidateStatus/{electionId}', headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'application/json',
+    'Authorization' => 'Bearer {access-token}',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','https://elections.hse.ru/elections/myCandidateStatus/{electionId}', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("https://elections.hse.ru/elections/myCandidateStatus/{electionId}");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+        "Authorization": []string{"Bearer {access-token}"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "https://elections.hse.ru/elections/myCandidateStatus/{electionId}", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /elections/myCandidateStatus/{electionId}`
+
+*Статус по заявке в кандидаты*
+
+Статус по заявке в кандидаты
+
+<h3 id="get__elections_mycandidatestatus_{electionid}-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|electionId|path|integer(int64)|true|Выборы|
+
+> Example responses
+
+> 200 Response
+
+```json
+"approved"
+```
+
+<h3 id="get__elections_mycandidatestatus_{electionid}-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Успешно|string|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Невалидно|None|
 
 <aside class="warning">
@@ -566,6 +1014,7 @@ func main() {
 
 ```json
 {
+  "id": 0,
   "name": "Выборы в КпЦ",
   "isRunoff": true,
   "mandates": 0,
@@ -766,10 +1215,12 @@ func main() {
 [
   {
     "id": 1,
+    "electionId": 1,
     "name": "Имя",
     "photoUrl": "https://img.com/img.png",
     "description": "Программа",
-    "approved": true
+    "approved": true,
+    "waitingForApprove": true
   }
 ]
 ```
@@ -789,10 +1240,12 @@ Status Code **200**
 |---|---|---|---|---|
 |*anonymous*|[[Candidate](#schemacandidate)]|false|none|none|
 |» id|integer(int64)|true|none|none|
+|» electionId|integer(int64)|true|none|none|
 |» name|string|true|none|none|
 |» photoUrl|string(url)|true|none|none|
 |» description|string|true|none|none|
 |» approved|boolean|true|none|none|
+|» waitingForApprove|boolean|false|none|none|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -1842,13 +2295,13 @@ elk_auth ( Scopes: admin )
 
 ```shell
 # You can also use wget
-curl -X POST https://elections.hse.ru/elections/create?election=name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft \
+curl -X POST https://elections.hse.ru/elections/create?election=id,0,name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft \
   -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```http
-POST https://elections.hse.ru/elections/create?election=name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft HTTP/1.1
+POST https://elections.hse.ru/elections/create?election=id,0,name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft HTTP/1.1
 Host: elections.hse.ru
 
 ```
@@ -1859,7 +2312,7 @@ const headers = {
   'Authorization':'Bearer {access-token}'
 };
 
-fetch('https://elections.hse.ru/elections/create?election=name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft',
+fetch('https://elections.hse.ru/elections/create?election=id,0,name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft',
 {
   method: 'POST',
 
@@ -1898,6 +2351,7 @@ headers = {
 
 r = requests.post('https://elections.hse.ru/elections/create', params={
   'election': {
+  "id": 0,
   "name": "Выборы в КпЦ",
   "isRunoff": true,
   "mandates": 0,
@@ -1957,7 +2411,7 @@ try {
 ```
 
 ```java
-URL obj = new URL("https://elections.hse.ru/elections/create?election=name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft");
+URL obj = new URL("https://elections.hse.ru/elections/create?election=id,0,name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("POST");
 int responseCode = con.getResponseCode();
@@ -2188,19 +2642,19 @@ To perform this operation, you must be authenticated by means of one of the foll
 elk_auth ( Scopes: admin )
 </aside>
 
-## post__elections_publish_{electionId}
+## get__elections_next_{electionId}
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X POST https://elections.hse.ru/elections/publish/{electionId}?isDraft=true \
+curl -X GET https://elections.hse.ru/elections/next/{electionId} \
   -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```http
-POST https://elections.hse.ru/elections/publish/{electionId}?isDraft=true HTTP/1.1
+GET https://elections.hse.ru/elections/next/{electionId} HTTP/1.1
 Host: elections.hse.ru
 
 ```
@@ -2211,9 +2665,9 @@ const headers = {
   'Authorization':'Bearer {access-token}'
 };
 
-fetch('https://elections.hse.ru/elections/publish/{electionId}?isDraft=true',
+fetch('https://elections.hse.ru/elections/next/{electionId}',
 {
-  method: 'POST',
+  method: 'GET',
 
   headers: headers
 })
@@ -2233,10 +2687,9 @@ headers = {
   'Authorization' => 'Bearer {access-token}'
 }
 
-result = RestClient.post 'https://elections.hse.ru/elections/publish/{electionId}',
+result = RestClient.get 'https://elections.hse.ru/elections/next/{electionId}',
   params: {
-  'isDraft' => 'boolean'
-}, headers: headers
+  }, headers: headers
 
 p JSON.parse(result)
 
@@ -2248,9 +2701,7 @@ headers = {
   'Authorization': 'Bearer {access-token}'
 }
 
-r = requests.post('https://elections.hse.ru/elections/publish/{electionId}', params={
-  'isDraft': 'true'
-}, headers = headers)
+r = requests.get('https://elections.hse.ru/elections/next/{electionId}', headers = headers)
 
 print(r.json())
 
@@ -2271,7 +2722,7 @@ $client = new \GuzzleHttp\Client();
 $request_body = array();
 
 try {
-    $response = $client->request('POST','https://elections.hse.ru/elections/publish/{electionId}', array(
+    $response = $client->request('GET','https://elections.hse.ru/elections/next/{electionId}', array(
         'headers' => $headers,
         'json' => $request_body,
        )
@@ -2288,9 +2739,9 @@ try {
 ```
 
 ```java
-URL obj = new URL("https://elections.hse.ru/elections/publish/{electionId}?isDraft=true");
+URL obj = new URL("https://elections.hse.ru/elections/next/{electionId}");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("POST");
+con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
 BufferedReader in = new BufferedReader(
     new InputStreamReader(con.getInputStream()));
@@ -2319,7 +2770,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("POST", "https://elections.hse.ru/elections/publish/{electionId}", data)
+    req, err := http.NewRequest("GET", "https://elections.hse.ru/elections/next/{electionId}", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -2329,20 +2780,19 @@ func main() {
 
 ```
 
-`POST /elections/publish/{electionId}`
+`GET /elections/next/{electionId}`
 
-*Установить видимость выборов*
+*Перенести выборы на следующий этап*
 
-Установить видимость выборов (draft)
+Перенести выборы на следующий этап
 
-<h3 id="post__elections_publish_{electionid}-parameters">Parameters</h3>
+<h3 id="get__elections_next_{electionid}-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |electionId|path|integer(int64)|true|ID|
-|isDraft|query|boolean|true|Является ли черновиком|
 
-<h3 id="post__elections_publish_{electionid}-responses">Responses</h3>
+<h3 id="get__elections_next_{electionid}-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2354,32 +2804,35 @@ To perform this operation, you must be authenticated by means of one of the foll
 elk_auth ( Scopes: admin )
 </aside>
 
-## post__elections_registration_{electionId}
+## get__elections_getAllCandidates
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X POST https://elections.hse.ru/elections/registration/{electionId}?isRegistrationOpen=true \
+curl -X GET https://elections.hse.ru/elections/getAllCandidates \
+  -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```http
-POST https://elections.hse.ru/elections/registration/{electionId}?isRegistrationOpen=true HTTP/1.1
+GET https://elections.hse.ru/elections/getAllCandidates HTTP/1.1
 Host: elections.hse.ru
+Accept: application/json
 
 ```
 
 ```javascript
 
 const headers = {
+  'Accept':'application/json',
   'Authorization':'Bearer {access-token}'
 };
 
-fetch('https://elections.hse.ru/elections/registration/{electionId}?isRegistrationOpen=true',
+fetch('https://elections.hse.ru/elections/getAllCandidates',
 {
-  method: 'POST',
+  method: 'GET',
 
   headers: headers
 })
@@ -2396,13 +2849,13 @@ require 'rest-client'
 require 'json'
 
 headers = {
+  'Accept' => 'application/json',
   'Authorization' => 'Bearer {access-token}'
 }
 
-result = RestClient.post 'https://elections.hse.ru/elections/registration/{electionId}',
+result = RestClient.get 'https://elections.hse.ru/elections/getAllCandidates',
   params: {
-  'isRegistrationOpen' => 'boolean'
-}, headers: headers
+  }, headers: headers
 
 p JSON.parse(result)
 
@@ -2411,12 +2864,11 @@ p JSON.parse(result)
 ```python
 import requests
 headers = {
+  'Accept': 'application/json',
   'Authorization': 'Bearer {access-token}'
 }
 
-r = requests.post('https://elections.hse.ru/elections/registration/{electionId}', params={
-  'isRegistrationOpen': 'true'
-}, headers = headers)
+r = requests.get('https://elections.hse.ru/elections/getAllCandidates', headers = headers)
 
 print(r.json())
 
@@ -2428,6 +2880,7 @@ print(r.json())
 require 'vendor/autoload.php';
 
 $headers = array(
+    'Accept' => 'application/json',
     'Authorization' => 'Bearer {access-token}',
 );
 
@@ -2437,7 +2890,7 @@ $client = new \GuzzleHttp\Client();
 $request_body = array();
 
 try {
-    $response = $client->request('POST','https://elections.hse.ru/elections/registration/{electionId}', array(
+    $response = $client->request('GET','https://elections.hse.ru/elections/getAllCandidates', array(
         'headers' => $headers,
         'json' => $request_body,
        )
@@ -2454,9 +2907,9 @@ try {
 ```
 
 ```java
-URL obj = new URL("https://elections.hse.ru/elections/registration/{electionId}?isRegistrationOpen=true");
+URL obj = new URL("https://elections.hse.ru/elections/getAllCandidates");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("POST");
+con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
 BufferedReader in = new BufferedReader(
     new InputStreamReader(con.getInputStream()));
@@ -2481,11 +2934,12 @@ import (
 func main() {
 
     headers := map[string][]string{
+        "Accept": []string{"application/json"},
         "Authorization": []string{"Bearer {access-token}"},
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("POST", "https://elections.hse.ru/elections/registration/{electionId}", data)
+    req, err := http.NewRequest("GET", "https://elections.hse.ru/elections/getAllCandidates", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -2495,25 +2949,51 @@ func main() {
 
 ```
 
-`POST /elections/registration/{electionId}`
+`GET /elections/getAllCandidates`
 
-*Открыт ли сбор заявок*
+*Получить всех кандидатов*
 
-Открыт ли сбор заявок
+Получить всех кандидатов
 
-<h3 id="post__elections_registration_{electionid}-parameters">Parameters</h3>
+> Example responses
 
-|Name|In|Type|Required|Description|
-|---|---|---|---|---|
-|electionId|path|integer(int64)|true|ID|
-|isRegistrationOpen|query|boolean|true|Открыт ли сбор заявок|
+> 200 Response
 
-<h3 id="post__elections_registration_{electionid}-responses">Responses</h3>
+```json
+[
+  {
+    "id": 1,
+    "electionId": 1,
+    "name": "Имя",
+    "photoUrl": "https://img.com/img.png",
+    "description": "Программа",
+    "approved": true,
+    "waitingForApprove": true
+  }
+]
+```
+
+<h3 id="get__elections_getallcandidates-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Выполнено|None|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Возвращает кандидатов|Inline|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Невалидный ID|None|
+
+<h3 id="get__elections_getallcandidates-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|*anonymous*|[[Candidate](#schemacandidate)]|false|none|none|
+|» id|integer(int64)|true|none|none|
+|» electionId|integer(int64)|true|none|none|
+|» name|string|true|none|none|
+|» photoUrl|string(url)|true|none|none|
+|» description|string|true|none|none|
+|» approved|boolean|true|none|none|
+|» waitingForApprove|boolean|false|none|none|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -2523,6 +3003,184 @@ elk_auth ( Scopes: admin )
 <h1 id="swagger-smart-elections-dictionary">dictionary</h1>
 
 Справочники
+
+## get__dictionaries_councilOrganizations
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET https://elections.hse.ru/dictionaries/councilOrganizations \
+  -H 'Accept: application/json'
+
+```
+
+```http
+GET https://elections.hse.ru/dictionaries/councilOrganizations HTTP/1.1
+Host: elections.hse.ru
+Accept: application/json
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('https://elections.hse.ru/dictionaries/councilOrganizations',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json'
+}
+
+result = RestClient.get 'https://elections.hse.ru/dictionaries/councilOrganizations',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('https://elections.hse.ru/dictionaries/councilOrganizations', headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','https://elections.hse.ru/dictionaries/councilOrganizations', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("https://elections.hse.ru/dictionaries/councilOrganizations");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "https://elections.hse.ru/dictionaries/councilOrganizations", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /dictionaries/councilOrganizations`
+
+*Студенческие организации*
+
+Возвращает студенческие организации
+
+> Example responses
+
+> 200 Response
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Коммитет по цифровизации"
+  }
+]
+```
+
+<h3 id="get__dictionaries_councilorganizations-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Возвращает студенческие организации|Inline|
+
+<h3 id="get__dictionaries_councilorganizations-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|*anonymous*|[[CouncilOrganization](#schemacouncilorganization)]|false|none|none|
+|» id|integer(int64)|true|none|none|
+|» name|string|true|none|none|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
 
 ## get__dictionaries_faculty
 
@@ -3003,6 +3661,7 @@ This operation does not require authentication
 
 ```json
 {
+  "id": 0,
   "name": "Выборы в КпЦ",
   "isRunoff": true,
   "mandates": 0,
@@ -3031,6 +3690,7 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
+|id|integer(int64)|true|none|none|
 |name|string|true|none|none|
 |isRunoff|boolean|true|none|none|
 |mandates|integer(int64)|false|none|none|
@@ -3090,10 +3750,12 @@ This operation does not require authentication
 ```json
 {
   "id": 1,
+  "electionId": 1,
   "name": "Имя",
   "photoUrl": "https://img.com/img.png",
   "description": "Программа",
-  "approved": true
+  "approved": true,
+  "waitingForApprove": true
 }
 
 ```
@@ -3103,10 +3765,12 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |id|integer(int64)|true|none|none|
+|electionId|integer(int64)|true|none|none|
 |name|string|true|none|none|
 |photoUrl|string(url)|true|none|none|
 |description|string|true|none|none|
 |approved|boolean|true|none|none|
+|waitingForApprove|boolean|false|none|none|
 
 <h2 id="tocS_CandidateRequest">CandidateRequest</h2>
 <!-- backwards compatibility -->
