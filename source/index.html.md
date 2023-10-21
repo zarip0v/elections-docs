@@ -1,5 +1,5 @@
 ---
-title: Swagger Smart Elections v0.0.6
+title: Swagger Smart Elections v0.1.0
 language_tabs:
   - shell: Shell
   - http: HTTP
@@ -20,7 +20,7 @@ headingLevel: 2
 
 <!-- Generator: Widdershins v4.0.1 -->
 
-<h1 id="swagger-smart-elections">Swagger Smart Elections v0.0.6</h1>
+<h1 id="swagger-smart-elections">Swagger Smart Elections v0.1.0</h1>
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
@@ -1016,6 +1016,7 @@ func main() {
 {
   "id": 0,
   "name": "Выборы в КпЦ",
+  "priority": 0,
   "isRunoff": true,
   "mandates": 0,
   "isForNearForeign": true,
@@ -2295,13 +2296,13 @@ elk_auth ( Scopes: admin )
 
 ```shell
 # You can also use wget
-curl -X POST https://elections.hse.ru/elections/create?election=id,0,name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft \
+curl -X POST https://elections.hse.ru/elections/create?election=id,0,name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,priority,0,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft \
   -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```http
-POST https://elections.hse.ru/elections/create?election=id,0,name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft HTTP/1.1
+POST https://elections.hse.ru/elections/create?election=id,0,name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,priority,0,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft HTTP/1.1
 Host: elections.hse.ru
 
 ```
@@ -2312,7 +2313,7 @@ const headers = {
   'Authorization':'Bearer {access-token}'
 };
 
-fetch('https://elections.hse.ru/elections/create?election=id,0,name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft',
+fetch('https://elections.hse.ru/elections/create?election=id,0,name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,priority,0,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft',
 {
   method: 'POST',
 
@@ -2353,6 +2354,7 @@ r = requests.post('https://elections.hse.ru/elections/create', params={
   'election': {
   "id": 0,
   "name": "Выборы в КпЦ",
+  "priority": 0,
   "isRunoff": true,
   "mandates": 0,
   "isForNearForeign": true,
@@ -2411,7 +2413,7 @@ try {
 ```
 
 ```java
-URL obj = new URL("https://elections.hse.ru/elections/create?election=id,0,name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft");
+URL obj = new URL("https://elections.hse.ru/elections/create?election=id,0,name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,priority,0,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("POST");
 int responseCode = con.getResponseCode();
@@ -3663,6 +3665,7 @@ This operation does not require authentication
 {
   "id": 0,
   "name": "Выборы в КпЦ",
+  "priority": 0,
   "isRunoff": true,
   "mandates": 0,
   "isForNearForeign": true,
@@ -3692,6 +3695,7 @@ This operation does not require authentication
 |---|---|---|---|---|
 |id|integer(int64)|true|none|none|
 |name|string|true|none|none|
+|priority|integer(int64)|true|none|none|
 |isRunoff|boolean|true|none|none|
 |mandates|integer(int64)|false|none|none|
 |isForNearForeign|boolean|true|none|none|
