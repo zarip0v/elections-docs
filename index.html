@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Swagger Smart Elections v0.1.2</title>
+    <title>Swagger Smart Elections v0.1.3</title>
 
     <style media="screen">
       .highlight table td { padding: 5px; }
@@ -313,7 +313,7 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#swagger-smart-elections" class="toc-h1 toc-link" data-title="Swagger Smart Elections v0.1.2">Swagger Smart Elections v0.1.2</a>
+            <a href="#swagger-smart-elections" class="toc-h1 toc-link" data-title="Swagger Smart Elections v0.1.3">Swagger Smart Elections v0.1.3</a>
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
@@ -365,7 +365,7 @@
             <a href="#swagger-smart-elections-observer" class="toc-h1 toc-link" data-title="observer">observer</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#post_elections_setprivatekey-electionid" class="toc-h2 toc-link" data-title="post_elections_setPrivateKey{electionId}">post_<em>elections_setPrivateKey</em>{electionId}</a>
+                    <a href="#post_observer_setprivatekey-electionid" class="toc-h2 toc-link" data-title="post_observer_setPrivateKey{electionId}">post_<em>observer_setPrivateKey</em>{electionId}</a>
                   </li>
               </ul>
           </li>
@@ -373,19 +373,19 @@
             <a href="#swagger-smart-elections-admin" class="toc-h1 toc-link" data-title="admin">admin</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#post_elections_setpublickey-electionid" class="toc-h2 toc-link" data-title="post_elections_setPublicKey{electionId}">post_<em>elections_setPublicKey</em>{electionId}</a>
+                    <a href="#post_admin_setpublickey-electionid" class="toc-h2 toc-link" data-title="post_admin_setPublicKey{electionId}">post_<em>admin_setPublicKey</em>{electionId}</a>
                   </li>
                   <li>
-                    <a href="#post__elections_create" class="toc-h2 toc-link" data-title="post__elections_create">post__elections_create</a>
+                    <a href="#post__admin_create" class="toc-h2 toc-link" data-title="post__admin_create">post__admin_create</a>
                   </li>
                   <li>
-                    <a href="#post_elections_approvecandidate-electionid-_-candidateid" class="toc-h2 toc-link" data-title="post_elections_approveCandidate{electionId}_{candidateId}">post_<em>elections_approveCandidate</em>{electionId}_{candidateId}</a>
+                    <a href="#post_admin_approvecandidate-electionid-_-candidateid" class="toc-h2 toc-link" data-title="post_admin_approveCandidate{electionId}_{candidateId}">post_<em>admin_approveCandidate</em>{electionId}_{candidateId}</a>
                   </li>
                   <li>
-                    <a href="#post_elections_next-electionid" class="toc-h2 toc-link" data-title="post_elections_next{electionId}">post_<em>elections_next</em>{electionId}</a>
+                    <a href="#post_admin_next-electionid" class="toc-h2 toc-link" data-title="post_admin_next{electionId}">post_<em>admin_next</em>{electionId}</a>
                   </li>
                   <li>
-                    <a href="#get__elections_getallcandidates" class="toc-h2 toc-link" data-title="get__elections_getAllCandidates">get__elections_getAllCandidates</a>
+                    <a href="#get__admin_getallcandidates" class="toc-h2 toc-link" data-title="get__admin_getAllCandidates">get__admin_getAllCandidates</a>
                   </li>
               </ul>
           </li>
@@ -442,7 +442,7 @@
       <div class="content">
         <!-- Generator: Widdershins v4.0.1 -->
 
-<h1 id="swagger-smart-elections">Swagger Smart Elections v0.1.2</h1>
+<h1 id="swagger-smart-elections">Swagger Smart Elections v0.1.3</h1>
 
 <blockquote>
 <p>Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.</p>
@@ -1262,7 +1262,23 @@ curl <span class="nt">-X</span> GET https://elections.hse.ru/elections/all <span
 </tr>
 <tr>
 <td>status</td>
+<td>created</td>
+</tr>
+<tr>
+<td>status</td>
+<td>waiting</td>
+</tr>
+<tr>
+<td>status</td>
 <td>started</td>
+</tr>
+<tr>
+<td>status</td>
+<td>finished</td>
+</tr>
+<tr>
+<td>status</td>
+<td>decrypted</td>
 </tr>
 <tr>
 <td>status</td>
@@ -1478,7 +1494,8 @@ curl <span class="nt">-X</span> GET https://elections.hse.ru/elections/get/<span
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"finishTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"draft"</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"draft"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"isVoted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="get__elections_get_{electionid}-responses">Responses</h3>
@@ -2513,15 +2530,15 @@ elk_auth ( Scopes: elect )
 <h1 id="swagger-smart-elections-observer">observer</h1>
 
 <p>Инструментарий для наблюдателя</p>
-<h2 id='post_elections_setprivatekey-electionid'>post_<em>elections_setPrivateKey</em>{electionId}</h2>
+<h2 id='post_observer_setprivatekey-electionid'>post_<em>observer_setPrivateKey</em>{electionId}</h2>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/setPrivateKey/<span class="o">{</span>electionId<span class="o">}</span>?key<span class="o">=</span>string <span class="se">\</span>
+curl <span class="nt">-X</span> POST https://elections.hse.ru/observer/setPrivateKey/<span class="o">{</span>electionId<span class="o">}</span>?key<span class="o">=</span>string <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://elections.hse.ru/elections/setPrivateKey/{electionId}?key=string</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://elections.hse.ru/observer/setPrivateKey/{electionId}?key=string</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">elections.hse.ru</span>
 
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
@@ -2529,7 +2546,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/setPriva
   <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">Bearer {access-token}</span><span class="dl">'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://elections.hse.ru/elections/setPrivateKey/{electionId}?key=string</span><span class="dl">'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://elections.hse.ru/observer/setPrivateKey/{electionId}?key=string</span><span class="dl">'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
 
@@ -2548,7 +2565,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/setPriva
   <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://elections.hse.ru/elections/setPrivateKey/{electionId}'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://elections.hse.ru/observer/setPrivateKey/{electionId}'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
   <span class="s1">'key'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span>
 <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
@@ -2560,7 +2577,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/setPriva
   <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://elections.hse.ru/elections/setPrivateKey/{electionId}'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://elections.hse.ru/observer/setPrivateKey/{electionId}'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
   <span class="s">'key'</span><span class="p">:</span> <span class="s">'string'</span>
 <span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
@@ -2580,7 +2597,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/setPriva
 <span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
 
 <span class="k">try</span> <span class="p">{</span>
-    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="nf">request</span><span class="p">(</span><span class="s1">'POST'</span><span class="p">,</span><span class="s1">'https://elections.hse.ru/elections/setPrivateKey/{electionId}'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="nf">request</span><span class="p">(</span><span class="s1">'POST'</span><span class="p">,</span><span class="s1">'https://elections.hse.ru/observer/setPrivateKey/{electionId}'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
         <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
         <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
        <span class="p">)</span>
@@ -2594,7 +2611,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/setPriva
 
  <span class="c1">// ...</span>
 
-</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="no">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://elections.hse.ru/elections/setPrivateKey/{electionId}?key=string"</span><span class="o">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="no">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://elections.hse.ru/observer/setPrivateKey/{electionId}?key=string"</span><span class="o">);</span>
 <span class="nc">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -2622,7 +2639,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/setPriva
     <span class="p">}</span>
 
     <span class="n">data</span> <span class="o">:=</span> <span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span>
-    <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"https://elections.hse.ru/elections/setPrivateKey/{electionId}"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"https://elections.hse.ru/observer/setPrivateKey/{electionId}"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
     <span class="n">req</span><span class="o">.</span><span class="n">Header</span> <span class="o">=</span> <span class="n">headers</span>
 
     <span class="n">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span>
@@ -2631,13 +2648,13 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/setPriva
 <span class="p">}</span>
 
 </code></pre></div>
-<p><code>POST /elections/setPrivateKey/{electionId}</code></p>
+<p><code>POST /observer/setPrivateKey/{electionId}</code></p>
 
 <p><em>Установить часть приватного ключа для выборов</em></p>
 
 <p>Создает выборы, для администратора</p>
 
-<h3 id="post__elections_setprivatekey_{electionid}-parameters">Parameters</h3>
+<h3 id="post__observer_setprivatekey_{electionid}-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -2664,7 +2681,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/setPriva
 </tr>
 </tbody></table>
 
-<h3 id="post__elections_setprivatekey_{electionid}-responses">Responses</h3>
+<h3 id="post__observer_setprivatekey_{electionid}-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -2690,15 +2707,15 @@ elk_auth ( Scopes: observer )
 <h1 id="swagger-smart-elections-admin">admin</h1>
 
 <p>Инструментарий для администратора</p>
-<h2 id='post_elections_setpublickey-electionid'>post_<em>elections_setPublicKey</em>{electionId}</h2>
+<h2 id='post_admin_setpublickey-electionid'>post_<em>admin_setPublicKey</em>{electionId}</h2>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/setPublicKey/<span class="o">{</span>electionId<span class="o">}</span>?key<span class="o">=</span>string <span class="se">\</span>
+curl <span class="nt">-X</span> POST https://elections.hse.ru/admin/setPublicKey/<span class="o">{</span>electionId<span class="o">}</span>?key<span class="o">=</span>string <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://elections.hse.ru/elections/setPublicKey/{electionId}?key=string</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://elections.hse.ru/admin/setPublicKey/{electionId}?key=string</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">elections.hse.ru</span>
 
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
@@ -2706,7 +2723,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/setPubli
   <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">Bearer {access-token}</span><span class="dl">'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://elections.hse.ru/elections/setPublicKey/{electionId}?key=string</span><span class="dl">'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://elections.hse.ru/admin/setPublicKey/{electionId}?key=string</span><span class="dl">'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
 
@@ -2725,7 +2742,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/setPubli
   <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://elections.hse.ru/elections/setPublicKey/{electionId}'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://elections.hse.ru/admin/setPublicKey/{electionId}'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
   <span class="s1">'key'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span>
 <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
@@ -2737,7 +2754,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/setPubli
   <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://elections.hse.ru/elections/setPublicKey/{electionId}'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://elections.hse.ru/admin/setPublicKey/{electionId}'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
   <span class="s">'key'</span><span class="p">:</span> <span class="s">'string'</span>
 <span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
@@ -2757,7 +2774,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/setPubli
 <span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
 
 <span class="k">try</span> <span class="p">{</span>
-    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="nf">request</span><span class="p">(</span><span class="s1">'POST'</span><span class="p">,</span><span class="s1">'https://elections.hse.ru/elections/setPublicKey/{electionId}'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="nf">request</span><span class="p">(</span><span class="s1">'POST'</span><span class="p">,</span><span class="s1">'https://elections.hse.ru/admin/setPublicKey/{electionId}'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
         <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
         <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
        <span class="p">)</span>
@@ -2771,7 +2788,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/setPubli
 
  <span class="c1">// ...</span>
 
-</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="no">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://elections.hse.ru/elections/setPublicKey/{electionId}?key=string"</span><span class="o">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="no">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://elections.hse.ru/admin/setPublicKey/{electionId}?key=string"</span><span class="o">);</span>
 <span class="nc">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -2799,7 +2816,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/setPubli
     <span class="p">}</span>
 
     <span class="n">data</span> <span class="o">:=</span> <span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span>
-    <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"https://elections.hse.ru/elections/setPublicKey/{electionId}"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"https://elections.hse.ru/admin/setPublicKey/{electionId}"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
     <span class="n">req</span><span class="o">.</span><span class="n">Header</span> <span class="o">=</span> <span class="n">headers</span>
 
     <span class="n">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span>
@@ -2808,11 +2825,11 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/setPubli
 <span class="p">}</span>
 
 </code></pre></div>
-<p><code>POST /elections/setPublicKey/{electionId}</code></p>
+<p><code>POST /admin/setPublicKey/{electionId}</code></p>
 
 <p><em>Установить публичный ключ для выборов</em></p>
 
-<h3 id="post__elections_setpublickey_{electionid}-parameters">Parameters</h3>
+<h3 id="post__admin_setpublickey_{electionid}-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -2839,7 +2856,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/setPubli
 </tr>
 </tbody></table>
 
-<h3 id="post__elections_setpublickey_{electionid}-responses">Responses</h3>
+<h3 id="post__admin_setpublickey_{electionid}-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -2867,16 +2884,16 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/setPubli
 To perform this operation, you must be authenticated by means of one of the following methods:
 elk_auth ( Scopes: admin )
 </aside>
-<h2 id='post__elections_create'>post__elections_create</h2>
+<h2 id='post__admin_create'>post__admin_create</h2>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/create?election<span class="o">=</span><span class="nb">id</span>,string,name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,priority,0,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft <span class="se">\</span>
+curl <span class="nt">-X</span> POST https://elections.hse.ru/admin/create?election<span class="o">=</span><span class="nb">id</span>,string,name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,priority,0,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft,isVoted,true <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://elections.hse.ru/elections/create?election=id,string,name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,priority,0,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://elections.hse.ru/admin/create?election=id,string,name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,priority,0,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft,isVoted,true</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">elections.hse.ru</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 
@@ -2886,7 +2903,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/create?e
   <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">Bearer {access-token}</span><span class="dl">'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://elections.hse.ru/elections/create?election=id,string,name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,priority,0,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft</span><span class="dl">'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://elections.hse.ru/admin/create?election=id,string,name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,priority,0,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft,isVoted,true</span><span class="dl">'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
 
@@ -2906,7 +2923,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/create?e
   <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://elections.hse.ru/elections/create'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://elections.hse.ru/admin/create'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
   <span class="s1">'election'</span> <span class="o">=&gt;</span> <span class="s1">'[Election](#schemaelection)'</span>
 <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
@@ -2919,7 +2936,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/create?e
   <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://elections.hse.ru/elections/create'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://elections.hse.ru/admin/create'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
   <span class="s">'election'</span><span class="p">:</span> <span class="p">{</span>
   <span class="s">"id"</span><span class="p">:</span> <span class="s">"string"</span><span class="p">,</span>
   <span class="s">"name"</span><span class="p">:</span> <span class="s">"Выборы в КпЦ"</span><span class="p">,</span>
@@ -2942,7 +2959,8 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/create?e
   <span class="p">],</span>
   <span class="s">"startTime"</span><span class="p">:</span> <span class="s">"2019-08-24T14:15:22Z"</span><span class="p">,</span>
   <span class="s">"finishTime"</span><span class="p">:</span> <span class="s">"2019-08-24T14:15:22Z"</span><span class="p">,</span>
-  <span class="s">"status"</span><span class="p">:</span> <span class="s">"draft"</span>
+  <span class="s">"status"</span><span class="p">:</span> <span class="s">"draft"</span><span class="p">,</span>
+  <span class="s">"isVoted"</span><span class="p">:</span> <span class="n">true</span>
 <span class="p">}</span>
 <span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
@@ -2963,7 +2981,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/create?e
 <span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
 
 <span class="k">try</span> <span class="p">{</span>
-    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="nf">request</span><span class="p">(</span><span class="s1">'POST'</span><span class="p">,</span><span class="s1">'https://elections.hse.ru/elections/create'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="nf">request</span><span class="p">(</span><span class="s1">'POST'</span><span class="p">,</span><span class="s1">'https://elections.hse.ru/admin/create'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
         <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
         <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
        <span class="p">)</span>
@@ -2977,7 +2995,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/create?e
 
  <span class="c1">// ...</span>
 
-</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="no">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://elections.hse.ru/elections/create?election=id,string,name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,priority,0,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft"</span><span class="o">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="no">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://elections.hse.ru/admin/create?election=id,string,name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,priority,0,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft,isVoted,true"</span><span class="o">);</span>
 <span class="nc">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -3006,7 +3024,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/create?e
     <span class="p">}</span>
 
     <span class="n">data</span> <span class="o">:=</span> <span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span>
-    <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"https://elections.hse.ru/elections/create"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"https://elections.hse.ru/admin/create"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
     <span class="n">req</span><span class="o">.</span><span class="n">Header</span> <span class="o">=</span> <span class="n">headers</span>
 
     <span class="n">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span>
@@ -3015,13 +3033,13 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/create?e
 <span class="p">}</span>
 
 </code></pre></div>
-<p><code>POST /elections/create</code></p>
+<p><code>POST /admin/create</code></p>
 
 <p><em>Создать выборы</em></p>
 
 <p>Создает выборы, для администратора</p>
 
-<h3 id="post__elections_create-parameters">Parameters</h3>
+<h3 id="post__admin_create-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -3068,10 +3086,11 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/create?e
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"finishTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"draft"</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"draft"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"isVoted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="post__elections_create-responses">Responses</h3>
+<h3 id="post__admin_create-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -3099,15 +3118,15 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/create?e
 To perform this operation, you must be authenticated by means of one of the following methods:
 elk_auth ( Scopes: admin )
 </aside>
-<h2 id='post_elections_approvecandidate-electionid-_-candidateid'>post_<em>elections_approveCandidate</em>{electionId}_{candidateId}</h2>
+<h2 id='post_admin_approvecandidate-electionid-_-candidateid'>post_<em>admin_approveCandidate</em>{electionId}_{candidateId}</h2>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/approveCandidate/<span class="o">{</span>electionId<span class="o">}</span>/<span class="o">{</span>candidateId<span class="o">}</span>?approve<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+curl <span class="nt">-X</span> POST https://elections.hse.ru/admin/approveCandidate/<span class="o">{</span>electionId<span class="o">}</span>/<span class="o">{</span>candidateId<span class="o">}</span>?approve<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://elections.hse.ru/elections/approveCandidate/{electionId}/{candidateId}?approve=true</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://elections.hse.ru/admin/approveCandidate/{electionId}/{candidateId}?approve=true</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">elections.hse.ru</span>
 
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
@@ -3115,7 +3134,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/approveC
   <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">Bearer {access-token}</span><span class="dl">'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://elections.hse.ru/elections/approveCandidate/{electionId}/{candidateId}?approve=true</span><span class="dl">'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://elections.hse.ru/admin/approveCandidate/{electionId}/{candidateId}?approve=true</span><span class="dl">'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
 
@@ -3134,7 +3153,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/approveC
   <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://elections.hse.ru/elections/approveCandidate/{electionId}/{candidateId}'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://elections.hse.ru/admin/approveCandidate/{electionId}/{candidateId}'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
   <span class="s1">'approve'</span> <span class="o">=&gt;</span> <span class="s1">'boolean'</span>
 <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
@@ -3146,7 +3165,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/approveC
   <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://elections.hse.ru/elections/approveCandidate/{electionId}/{candidateId}'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://elections.hse.ru/admin/approveCandidate/{electionId}/{candidateId}'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
   <span class="s">'approve'</span><span class="p">:</span> <span class="s">'true'</span>
 <span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
@@ -3166,7 +3185,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/approveC
 <span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
 
 <span class="k">try</span> <span class="p">{</span>
-    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="nf">request</span><span class="p">(</span><span class="s1">'POST'</span><span class="p">,</span><span class="s1">'https://elections.hse.ru/elections/approveCandidate/{electionId}/{candidateId}'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="nf">request</span><span class="p">(</span><span class="s1">'POST'</span><span class="p">,</span><span class="s1">'https://elections.hse.ru/admin/approveCandidate/{electionId}/{candidateId}'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
         <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
         <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
        <span class="p">)</span>
@@ -3180,7 +3199,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/approveC
 
  <span class="c1">// ...</span>
 
-</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="no">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://elections.hse.ru/elections/approveCandidate/{electionId}/{candidateId}?approve=true"</span><span class="o">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="no">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://elections.hse.ru/admin/approveCandidate/{electionId}/{candidateId}?approve=true"</span><span class="o">);</span>
 <span class="nc">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -3208,7 +3227,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/approveC
     <span class="p">}</span>
 
     <span class="n">data</span> <span class="o">:=</span> <span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span>
-    <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"https://elections.hse.ru/elections/approveCandidate/{electionId}/{candidateId}"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"https://elections.hse.ru/admin/approveCandidate/{electionId}/{candidateId}"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
     <span class="n">req</span><span class="o">.</span><span class="n">Header</span> <span class="o">=</span> <span class="n">headers</span>
 
     <span class="n">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span>
@@ -3217,13 +3236,13 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/approveC
 <span class="p">}</span>
 
 </code></pre></div>
-<p><code>POST /elections/approveCandidate/{electionId}/{candidateId}</code></p>
+<p><code>POST /admin/approveCandidate/{electionId}/{candidateId}</code></p>
 
 <p><em>Одобрить/отклонить кандидата</em></p>
 
 <p>Одобрить/отклонить кандидата</p>
 
-<h3 id="post__elections_approvecandidate_{electionid}_{candidateid}-parameters">Parameters</h3>
+<h3 id="post__admin_approvecandidate_{electionid}_{candidateid}-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -3257,7 +3276,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/approveC
 </tr>
 </tbody></table>
 
-<h3 id="post__elections_approvecandidate_{electionid}_{candidateid}-responses">Responses</h3>
+<h3 id="post__admin_approvecandidate_{electionid}_{candidateid}-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -3285,15 +3304,15 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/approveC
 To perform this operation, you must be authenticated by means of one of the following methods:
 elk_auth ( Scopes: admin )
 </aside>
-<h2 id='post_elections_next-electionid'>post_<em>elections_next</em>{electionId}</h2>
+<h2 id='post_admin_next-electionid'>post_<em>admin_next</em>{electionId}</h2>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/next/<span class="o">{</span>electionId<span class="o">}</span> <span class="se">\</span>
+curl <span class="nt">-X</span> POST https://elections.hse.ru/admin/next/<span class="o">{</span>electionId<span class="o">}</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://elections.hse.ru/elections/next/{electionId}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://elections.hse.ru/admin/next/{electionId}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">elections.hse.ru</span>
 
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
@@ -3301,7 +3320,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/next/<sp
   <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">Bearer {access-token}</span><span class="dl">'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://elections.hse.ru/elections/next/{electionId}</span><span class="dl">'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://elections.hse.ru/admin/next/{electionId}</span><span class="dl">'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
 
@@ -3320,7 +3339,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/next/<sp
   <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://elections.hse.ru/elections/next/{electionId}'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://elections.hse.ru/admin/next/{electionId}'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
   <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
 
@@ -3331,7 +3350,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/next/<sp
   <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://elections.hse.ru/elections/next/{electionId}'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://elections.hse.ru/admin/next/{electionId}'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 
@@ -3349,7 +3368,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/next/<sp
 <span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
 
 <span class="k">try</span> <span class="p">{</span>
-    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="nf">request</span><span class="p">(</span><span class="s1">'POST'</span><span class="p">,</span><span class="s1">'https://elections.hse.ru/elections/next/{electionId}'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="nf">request</span><span class="p">(</span><span class="s1">'POST'</span><span class="p">,</span><span class="s1">'https://elections.hse.ru/admin/next/{electionId}'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
         <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
         <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
        <span class="p">)</span>
@@ -3363,7 +3382,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/next/<sp
 
  <span class="c1">// ...</span>
 
-</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="no">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://elections.hse.ru/elections/next/{electionId}"</span><span class="o">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="no">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://elections.hse.ru/admin/next/{electionId}"</span><span class="o">);</span>
 <span class="nc">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -3391,7 +3410,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/next/<sp
     <span class="p">}</span>
 
     <span class="n">data</span> <span class="o">:=</span> <span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span>
-    <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"https://elections.hse.ru/elections/next/{electionId}"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"https://elections.hse.ru/admin/next/{electionId}"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
     <span class="n">req</span><span class="o">.</span><span class="n">Header</span> <span class="o">=</span> <span class="n">headers</span>
 
     <span class="n">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span>
@@ -3400,13 +3419,13 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/next/<sp
 <span class="p">}</span>
 
 </code></pre></div>
-<p><code>POST /elections/next/{electionId}</code></p>
+<p><code>POST /admin/next/{electionId}</code></p>
 
 <p><em>Перенести выборы на следующий этап</em></p>
 
 <p>Перенести выборы на следующий этап</p>
 
-<h3 id="post__elections_next_{electionid}-parameters">Parameters</h3>
+<h3 id="post__admin_next_{electionid}-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -3426,7 +3445,7 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/next/<sp
 </tr>
 </tbody></table>
 
-<h3 id="post__elections_next_{electionid}-responses">Responses</h3>
+<h3 id="post__admin_next_{electionid}-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -3454,16 +3473,16 @@ curl <span class="nt">-X</span> POST https://elections.hse.ru/elections/next/<sp
 To perform this operation, you must be authenticated by means of one of the following methods:
 elk_auth ( Scopes: admin )
 </aside>
-<h2 id='get__elections_getallcandidates'>get__elections_getAllCandidates</h2>
+<h2 id='get__admin_getallcandidates'>get__admin_getAllCandidates</h2>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl <span class="nt">-X</span> GET https://elections.hse.ru/elections/getAllCandidates <span class="se">\</span>
+curl <span class="nt">-X</span> GET https://elections.hse.ru/admin/getAllCandidates <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://elections.hse.ru/elections/getAllCandidates</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://elections.hse.ru/admin/getAllCandidates</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">elections.hse.ru</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 
@@ -3473,7 +3492,7 @@ curl <span class="nt">-X</span> GET https://elections.hse.ru/elections/getAllCan
   <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">Bearer {access-token}</span><span class="dl">'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://elections.hse.ru/elections/getAllCandidates</span><span class="dl">'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://elections.hse.ru/admin/getAllCandidates</span><span class="dl">'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
 
@@ -3493,7 +3512,7 @@ curl <span class="nt">-X</span> GET https://elections.hse.ru/elections/getAllCan
   <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://elections.hse.ru/elections/getAllCandidates'</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'https://elections.hse.ru/admin/getAllCandidates'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
   <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
 
@@ -3505,7 +3524,7 @@ curl <span class="nt">-X</span> GET https://elections.hse.ru/elections/getAllCan
   <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {access-token}'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://elections.hse.ru/elections/getAllCandidates'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://elections.hse.ru/admin/getAllCandidates'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 
@@ -3524,7 +3543,7 @@ curl <span class="nt">-X</span> GET https://elections.hse.ru/elections/getAllCan
 <span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
 
 <span class="k">try</span> <span class="p">{</span>
-    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="nf">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'https://elections.hse.ru/elections/getAllCandidates'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="nf">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'https://elections.hse.ru/admin/getAllCandidates'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
         <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
         <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
        <span class="p">)</span>
@@ -3538,7 +3557,7 @@ curl <span class="nt">-X</span> GET https://elections.hse.ru/elections/getAllCan
 
  <span class="c1">// ...</span>
 
-</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="no">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://elections.hse.ru/elections/getAllCandidates"</span><span class="o">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="no">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://elections.hse.ru/admin/getAllCandidates"</span><span class="o">);</span>
 <span class="nc">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -3567,7 +3586,7 @@ curl <span class="nt">-X</span> GET https://elections.hse.ru/elections/getAllCan
     <span class="p">}</span>
 
     <span class="n">data</span> <span class="o">:=</span> <span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span>
-    <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"https://elections.hse.ru/elections/getAllCandidates"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"https://elections.hse.ru/admin/getAllCandidates"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
     <span class="n">req</span><span class="o">.</span><span class="n">Header</span> <span class="o">=</span> <span class="n">headers</span>
 
     <span class="n">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span>
@@ -3576,7 +3595,7 @@ curl <span class="nt">-X</span> GET https://elections.hse.ru/elections/getAllCan
 <span class="p">}</span>
 
 </code></pre></div>
-<p><code>GET /elections/getAllCandidates</code></p>
+<p><code>GET /admin/getAllCandidates</code></p>
 
 <p><em>Получить всех кандидатов</em></p>
 
@@ -3599,7 +3618,7 @@ curl <span class="nt">-X</span> GET https://elections.hse.ru/elections/getAllCan
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
-<h3 id="get__elections_getallcandidates-responses">Responses</h3>
+<h3 id="get__admin_getallcandidates-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -3617,7 +3636,7 @@ curl <span class="nt">-X</span> GET https://elections.hse.ru/elections/getAllCan
 </tr>
 </tbody></table>
 
-<h3 id="get__elections_getallcandidates-responseschema">Response Schema</h3>
+<h3 id="get__admin_getallcandidates-responseschema">Response Schema</h3>
 
 <p>Status Code <strong>200</strong></p>
 
@@ -4534,7 +4553,8 @@ This operation does not require authentication
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"finishTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"draft"</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"draft"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"isVoted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div><h3 id='properties-5'>Properties</h3>
@@ -4635,6 +4655,13 @@ This operation does not require authentication
 <td>status</td>
 <td>string</td>
 <td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>isVoted</td>
+<td>boolean</td>
+<td>false</td>
 <td>none</td>
 <td>none</td>
 </tr>
