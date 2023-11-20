@@ -1,5 +1,5 @@
 ---
-title: Swagger Smart Elections v0.1.2
+title: Swagger Smart Elections v0.1.3
 language_tabs:
   - shell: Shell
   - http: HTTP
@@ -20,7 +20,7 @@ headingLevel: 2
 
 <!-- Generator: Widdershins v4.0.1 -->
 
-<h1 id="swagger-smart-elections">Swagger Smart Elections v0.1.2</h1>
+<h1 id="swagger-smart-elections">Swagger Smart Elections v0.1.3</h1>
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
@@ -825,7 +825,11 @@ func main() {
 |Parameter|Value|
 |---|---|
 |status|all|
+|status|created|
+|status|waiting|
 |status|started|
+|status|finished|
+|status|decrypted|
 |status|results|
 
 > Example responses
@@ -1035,7 +1039,8 @@ func main() {
   ],
   "startTime": "2019-08-24T14:15:22Z",
   "finishTime": "2019-08-24T14:15:22Z",
-  "status": "draft"
+  "status": "draft",
+  "isVoted": true
 }
 ```
 
@@ -1957,19 +1962,19 @@ elk_auth ( Scopes: elect )
 
 Инструментарий для наблюдателя
 
-## post__elections_setPrivateKey_{electionId}
+## post__observer_setPrivateKey_{electionId}
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X POST https://elections.hse.ru/elections/setPrivateKey/{electionId}?key=string \
+curl -X POST https://elections.hse.ru/observer/setPrivateKey/{electionId}?key=string \
   -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```http
-POST https://elections.hse.ru/elections/setPrivateKey/{electionId}?key=string HTTP/1.1
+POST https://elections.hse.ru/observer/setPrivateKey/{electionId}?key=string HTTP/1.1
 Host: elections.hse.ru
 
 ```
@@ -1980,7 +1985,7 @@ const headers = {
   'Authorization':'Bearer {access-token}'
 };
 
-fetch('https://elections.hse.ru/elections/setPrivateKey/{electionId}?key=string',
+fetch('https://elections.hse.ru/observer/setPrivateKey/{electionId}?key=string',
 {
   method: 'POST',
 
@@ -2002,7 +2007,7 @@ headers = {
   'Authorization' => 'Bearer {access-token}'
 }
 
-result = RestClient.post 'https://elections.hse.ru/elections/setPrivateKey/{electionId}',
+result = RestClient.post 'https://elections.hse.ru/observer/setPrivateKey/{electionId}',
   params: {
   'key' => 'string'
 }, headers: headers
@@ -2017,7 +2022,7 @@ headers = {
   'Authorization': 'Bearer {access-token}'
 }
 
-r = requests.post('https://elections.hse.ru/elections/setPrivateKey/{electionId}', params={
+r = requests.post('https://elections.hse.ru/observer/setPrivateKey/{electionId}', params={
   'key': 'string'
 }, headers = headers)
 
@@ -2040,7 +2045,7 @@ $client = new \GuzzleHttp\Client();
 $request_body = array();
 
 try {
-    $response = $client->request('POST','https://elections.hse.ru/elections/setPrivateKey/{electionId}', array(
+    $response = $client->request('POST','https://elections.hse.ru/observer/setPrivateKey/{electionId}', array(
         'headers' => $headers,
         'json' => $request_body,
        )
@@ -2057,7 +2062,7 @@ try {
 ```
 
 ```java
-URL obj = new URL("https://elections.hse.ru/elections/setPrivateKey/{electionId}?key=string");
+URL obj = new URL("https://elections.hse.ru/observer/setPrivateKey/{electionId}?key=string");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("POST");
 int responseCode = con.getResponseCode();
@@ -2088,7 +2093,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("POST", "https://elections.hse.ru/elections/setPrivateKey/{electionId}", data)
+    req, err := http.NewRequest("POST", "https://elections.hse.ru/observer/setPrivateKey/{electionId}", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -2098,20 +2103,20 @@ func main() {
 
 ```
 
-`POST /elections/setPrivateKey/{electionId}`
+`POST /observer/setPrivateKey/{electionId}`
 
 *Установить часть приватного ключа для выборов*
 
 Создает выборы, для администратора
 
-<h3 id="post__elections_setprivatekey_{electionid}-parameters">Parameters</h3>
+<h3 id="post__observer_setprivatekey_{electionid}-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |electionId|path|string|true|none|
 |key|query|string|true|none|
 
-<h3 id="post__elections_setprivatekey_{electionid}-responses">Responses</h3>
+<h3 id="post__observer_setprivatekey_{electionid}-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2126,19 +2131,19 @@ elk_auth ( Scopes: observer )
 
 Инструментарий для администратора
 
-## post__elections_setPublicKey_{electionId}
+## post__admin_setPublicKey_{electionId}
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X POST https://elections.hse.ru/elections/setPublicKey/{electionId}?key=string \
+curl -X POST https://elections.hse.ru/admin/setPublicKey/{electionId}?key=string \
   -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```http
-POST https://elections.hse.ru/elections/setPublicKey/{electionId}?key=string HTTP/1.1
+POST https://elections.hse.ru/admin/setPublicKey/{electionId}?key=string HTTP/1.1
 Host: elections.hse.ru
 
 ```
@@ -2149,7 +2154,7 @@ const headers = {
   'Authorization':'Bearer {access-token}'
 };
 
-fetch('https://elections.hse.ru/elections/setPublicKey/{electionId}?key=string',
+fetch('https://elections.hse.ru/admin/setPublicKey/{electionId}?key=string',
 {
   method: 'POST',
 
@@ -2171,7 +2176,7 @@ headers = {
   'Authorization' => 'Bearer {access-token}'
 }
 
-result = RestClient.post 'https://elections.hse.ru/elections/setPublicKey/{electionId}',
+result = RestClient.post 'https://elections.hse.ru/admin/setPublicKey/{electionId}',
   params: {
   'key' => 'string'
 }, headers: headers
@@ -2186,7 +2191,7 @@ headers = {
   'Authorization': 'Bearer {access-token}'
 }
 
-r = requests.post('https://elections.hse.ru/elections/setPublicKey/{electionId}', params={
+r = requests.post('https://elections.hse.ru/admin/setPublicKey/{electionId}', params={
   'key': 'string'
 }, headers = headers)
 
@@ -2209,7 +2214,7 @@ $client = new \GuzzleHttp\Client();
 $request_body = array();
 
 try {
-    $response = $client->request('POST','https://elections.hse.ru/elections/setPublicKey/{electionId}', array(
+    $response = $client->request('POST','https://elections.hse.ru/admin/setPublicKey/{electionId}', array(
         'headers' => $headers,
         'json' => $request_body,
        )
@@ -2226,7 +2231,7 @@ try {
 ```
 
 ```java
-URL obj = new URL("https://elections.hse.ru/elections/setPublicKey/{electionId}?key=string");
+URL obj = new URL("https://elections.hse.ru/admin/setPublicKey/{electionId}?key=string");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("POST");
 int responseCode = con.getResponseCode();
@@ -2257,7 +2262,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("POST", "https://elections.hse.ru/elections/setPublicKey/{electionId}", data)
+    req, err := http.NewRequest("POST", "https://elections.hse.ru/admin/setPublicKey/{electionId}", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -2267,18 +2272,18 @@ func main() {
 
 ```
 
-`POST /elections/setPublicKey/{electionId}`
+`POST /admin/setPublicKey/{electionId}`
 
 *Установить публичный ключ для выборов*
 
-<h3 id="post__elections_setpublickey_{electionid}-parameters">Parameters</h3>
+<h3 id="post__admin_setpublickey_{electionid}-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |electionId|path|string|true|none|
 |key|query|string|true|none|
 
-<h3 id="post__elections_setpublickey_{electionid}-responses">Responses</h3>
+<h3 id="post__admin_setpublickey_{electionid}-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2290,20 +2295,20 @@ To perform this operation, you must be authenticated by means of one of the foll
 elk_auth ( Scopes: admin )
 </aside>
 
-## post__elections_create
+## post__admin_create
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X POST https://elections.hse.ru/elections/create?election=id,string,name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,priority,0,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft \
+curl -X POST https://elections.hse.ru/admin/create?election=id,string,name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,priority,0,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft,isVoted,true \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```http
-POST https://elections.hse.ru/elections/create?election=id,string,name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,priority,0,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft HTTP/1.1
+POST https://elections.hse.ru/admin/create?election=id,string,name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,priority,0,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft,isVoted,true HTTP/1.1
 Host: elections.hse.ru
 Accept: application/json
 
@@ -2316,7 +2321,7 @@ const headers = {
   'Authorization':'Bearer {access-token}'
 };
 
-fetch('https://elections.hse.ru/elections/create?election=id,string,name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,priority,0,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft',
+fetch('https://elections.hse.ru/admin/create?election=id,string,name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,priority,0,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft,isVoted,true',
 {
   method: 'POST',
 
@@ -2339,7 +2344,7 @@ headers = {
   'Authorization' => 'Bearer {access-token}'
 }
 
-result = RestClient.post 'https://elections.hse.ru/elections/create',
+result = RestClient.post 'https://elections.hse.ru/admin/create',
   params: {
   'election' => '[Election](#schemaelection)'
 }, headers: headers
@@ -2355,7 +2360,7 @@ headers = {
   'Authorization': 'Bearer {access-token}'
 }
 
-r = requests.post('https://elections.hse.ru/elections/create', params={
+r = requests.post('https://elections.hse.ru/admin/create', params={
   'election': {
   "id": "string",
   "name": "Выборы в КпЦ",
@@ -2378,7 +2383,8 @@ r = requests.post('https://elections.hse.ru/elections/create', params={
   ],
   "startTime": "2019-08-24T14:15:22Z",
   "finishTime": "2019-08-24T14:15:22Z",
-  "status": "draft"
+  "status": "draft",
+  "isVoted": true
 }
 }, headers = headers)
 
@@ -2402,7 +2408,7 @@ $client = new \GuzzleHttp\Client();
 $request_body = array();
 
 try {
-    $response = $client->request('POST','https://elections.hse.ru/elections/create', array(
+    $response = $client->request('POST','https://elections.hse.ru/admin/create', array(
         'headers' => $headers,
         'json' => $request_body,
        )
@@ -2419,7 +2425,7 @@ try {
 ```
 
 ```java
-URL obj = new URL("https://elections.hse.ru/elections/create?election=id,string,name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,priority,0,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft");
+URL obj = new URL("https://elections.hse.ru/admin/create?election=id,string,name,%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B%20%D0%B2%20%D0%9A%D0%BF%D0%A6,priority,0,isRunoff,true,mandates,0,isForNearForeign,true,isForFarForeign,true,acceptedCouncilOrganizationsIds,1%2C2,acceptedFacultiesIds,1%2C2,acceptedDormitoriesIds,1%2C2,startTime,2019-08-24T14%3A15%3A22Z,finishTime,2019-08-24T14%3A15%3A22Z,status,draft,isVoted,true");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("POST");
 int responseCode = con.getResponseCode();
@@ -2451,7 +2457,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("POST", "https://elections.hse.ru/elections/create", data)
+    req, err := http.NewRequest("POST", "https://elections.hse.ru/admin/create", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -2461,13 +2467,13 @@ func main() {
 
 ```
 
-`POST /elections/create`
+`POST /admin/create`
 
 *Создать выборы*
 
 Создает выборы, для администратора
 
-<h3 id="post__elections_create-parameters">Parameters</h3>
+<h3 id="post__admin_create-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2500,11 +2506,12 @@ func main() {
   ],
   "startTime": "2019-08-24T14:15:22Z",
   "finishTime": "2019-08-24T14:15:22Z",
-  "status": "draft"
+  "status": "draft",
+  "isVoted": true
 }
 ```
 
-<h3 id="post__elections_create-responses">Responses</h3>
+<h3 id="post__admin_create-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2516,19 +2523,19 @@ To perform this operation, you must be authenticated by means of one of the foll
 elk_auth ( Scopes: admin )
 </aside>
 
-## post__elections_approveCandidate_{electionId}_{candidateId}
+## post__admin_approveCandidate_{electionId}_{candidateId}
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X POST https://elections.hse.ru/elections/approveCandidate/{electionId}/{candidateId}?approve=true \
+curl -X POST https://elections.hse.ru/admin/approveCandidate/{electionId}/{candidateId}?approve=true \
   -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```http
-POST https://elections.hse.ru/elections/approveCandidate/{electionId}/{candidateId}?approve=true HTTP/1.1
+POST https://elections.hse.ru/admin/approveCandidate/{electionId}/{candidateId}?approve=true HTTP/1.1
 Host: elections.hse.ru
 
 ```
@@ -2539,7 +2546,7 @@ const headers = {
   'Authorization':'Bearer {access-token}'
 };
 
-fetch('https://elections.hse.ru/elections/approveCandidate/{electionId}/{candidateId}?approve=true',
+fetch('https://elections.hse.ru/admin/approveCandidate/{electionId}/{candidateId}?approve=true',
 {
   method: 'POST',
 
@@ -2561,7 +2568,7 @@ headers = {
   'Authorization' => 'Bearer {access-token}'
 }
 
-result = RestClient.post 'https://elections.hse.ru/elections/approveCandidate/{electionId}/{candidateId}',
+result = RestClient.post 'https://elections.hse.ru/admin/approveCandidate/{electionId}/{candidateId}',
   params: {
   'approve' => 'boolean'
 }, headers: headers
@@ -2576,7 +2583,7 @@ headers = {
   'Authorization': 'Bearer {access-token}'
 }
 
-r = requests.post('https://elections.hse.ru/elections/approveCandidate/{electionId}/{candidateId}', params={
+r = requests.post('https://elections.hse.ru/admin/approveCandidate/{electionId}/{candidateId}', params={
   'approve': 'true'
 }, headers = headers)
 
@@ -2599,7 +2606,7 @@ $client = new \GuzzleHttp\Client();
 $request_body = array();
 
 try {
-    $response = $client->request('POST','https://elections.hse.ru/elections/approveCandidate/{electionId}/{candidateId}', array(
+    $response = $client->request('POST','https://elections.hse.ru/admin/approveCandidate/{electionId}/{candidateId}', array(
         'headers' => $headers,
         'json' => $request_body,
        )
@@ -2616,7 +2623,7 @@ try {
 ```
 
 ```java
-URL obj = new URL("https://elections.hse.ru/elections/approveCandidate/{electionId}/{candidateId}?approve=true");
+URL obj = new URL("https://elections.hse.ru/admin/approveCandidate/{electionId}/{candidateId}?approve=true");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("POST");
 int responseCode = con.getResponseCode();
@@ -2647,7 +2654,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("POST", "https://elections.hse.ru/elections/approveCandidate/{electionId}/{candidateId}", data)
+    req, err := http.NewRequest("POST", "https://elections.hse.ru/admin/approveCandidate/{electionId}/{candidateId}", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -2657,13 +2664,13 @@ func main() {
 
 ```
 
-`POST /elections/approveCandidate/{electionId}/{candidateId}`
+`POST /admin/approveCandidate/{electionId}/{candidateId}`
 
 *Одобрить/отклонить кандидата*
 
 Одобрить/отклонить кандидата
 
-<h3 id="post__elections_approvecandidate_{electionid}_{candidateid}-parameters">Parameters</h3>
+<h3 id="post__admin_approvecandidate_{electionid}_{candidateid}-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -2671,7 +2678,7 @@ func main() {
 |candidateId|path|string|true|Кандидат в выборы|
 |approve|query|boolean|true|Одобрить/отклонить заявку|
 
-<h3 id="post__elections_approvecandidate_{electionid}_{candidateid}-responses">Responses</h3>
+<h3 id="post__admin_approvecandidate_{electionid}_{candidateid}-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2683,19 +2690,19 @@ To perform this operation, you must be authenticated by means of one of the foll
 elk_auth ( Scopes: admin )
 </aside>
 
-## post__elections_next_{electionId}
+## post__admin_next_{electionId}
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X POST https://elections.hse.ru/elections/next/{electionId} \
+curl -X POST https://elections.hse.ru/admin/next/{electionId} \
   -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```http
-POST https://elections.hse.ru/elections/next/{electionId} HTTP/1.1
+POST https://elections.hse.ru/admin/next/{electionId} HTTP/1.1
 Host: elections.hse.ru
 
 ```
@@ -2706,7 +2713,7 @@ const headers = {
   'Authorization':'Bearer {access-token}'
 };
 
-fetch('https://elections.hse.ru/elections/next/{electionId}',
+fetch('https://elections.hse.ru/admin/next/{electionId}',
 {
   method: 'POST',
 
@@ -2728,7 +2735,7 @@ headers = {
   'Authorization' => 'Bearer {access-token}'
 }
 
-result = RestClient.post 'https://elections.hse.ru/elections/next/{electionId}',
+result = RestClient.post 'https://elections.hse.ru/admin/next/{electionId}',
   params: {
   }, headers: headers
 
@@ -2742,7 +2749,7 @@ headers = {
   'Authorization': 'Bearer {access-token}'
 }
 
-r = requests.post('https://elections.hse.ru/elections/next/{electionId}', headers = headers)
+r = requests.post('https://elections.hse.ru/admin/next/{electionId}', headers = headers)
 
 print(r.json())
 
@@ -2763,7 +2770,7 @@ $client = new \GuzzleHttp\Client();
 $request_body = array();
 
 try {
-    $response = $client->request('POST','https://elections.hse.ru/elections/next/{electionId}', array(
+    $response = $client->request('POST','https://elections.hse.ru/admin/next/{electionId}', array(
         'headers' => $headers,
         'json' => $request_body,
        )
@@ -2780,7 +2787,7 @@ try {
 ```
 
 ```java
-URL obj = new URL("https://elections.hse.ru/elections/next/{electionId}");
+URL obj = new URL("https://elections.hse.ru/admin/next/{electionId}");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("POST");
 int responseCode = con.getResponseCode();
@@ -2811,7 +2818,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("POST", "https://elections.hse.ru/elections/next/{electionId}", data)
+    req, err := http.NewRequest("POST", "https://elections.hse.ru/admin/next/{electionId}", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -2821,19 +2828,19 @@ func main() {
 
 ```
 
-`POST /elections/next/{electionId}`
+`POST /admin/next/{electionId}`
 
 *Перенести выборы на следующий этап*
 
 Перенести выборы на следующий этап
 
-<h3 id="post__elections_next_{electionid}-parameters">Parameters</h3>
+<h3 id="post__admin_next_{electionid}-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |electionId|path|string|true|ID|
 
-<h3 id="post__elections_next_{electionid}-responses">Responses</h3>
+<h3 id="post__admin_next_{electionid}-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
@@ -2845,20 +2852,20 @@ To perform this operation, you must be authenticated by means of one of the foll
 elk_auth ( Scopes: admin )
 </aside>
 
-## get__elections_getAllCandidates
+## get__admin_getAllCandidates
 
 > Code samples
 
 ```shell
 # You can also use wget
-curl -X GET https://elections.hse.ru/elections/getAllCandidates \
+curl -X GET https://elections.hse.ru/admin/getAllCandidates \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer {access-token}'
 
 ```
 
 ```http
-GET https://elections.hse.ru/elections/getAllCandidates HTTP/1.1
+GET https://elections.hse.ru/admin/getAllCandidates HTTP/1.1
 Host: elections.hse.ru
 Accept: application/json
 
@@ -2871,7 +2878,7 @@ const headers = {
   'Authorization':'Bearer {access-token}'
 };
 
-fetch('https://elections.hse.ru/elections/getAllCandidates',
+fetch('https://elections.hse.ru/admin/getAllCandidates',
 {
   method: 'GET',
 
@@ -2894,7 +2901,7 @@ headers = {
   'Authorization' => 'Bearer {access-token}'
 }
 
-result = RestClient.get 'https://elections.hse.ru/elections/getAllCandidates',
+result = RestClient.get 'https://elections.hse.ru/admin/getAllCandidates',
   params: {
   }, headers: headers
 
@@ -2909,7 +2916,7 @@ headers = {
   'Authorization': 'Bearer {access-token}'
 }
 
-r = requests.get('https://elections.hse.ru/elections/getAllCandidates', headers = headers)
+r = requests.get('https://elections.hse.ru/admin/getAllCandidates', headers = headers)
 
 print(r.json())
 
@@ -2931,7 +2938,7 @@ $client = new \GuzzleHttp\Client();
 $request_body = array();
 
 try {
-    $response = $client->request('GET','https://elections.hse.ru/elections/getAllCandidates', array(
+    $response = $client->request('GET','https://elections.hse.ru/admin/getAllCandidates', array(
         'headers' => $headers,
         'json' => $request_body,
        )
@@ -2948,7 +2955,7 @@ try {
 ```
 
 ```java
-URL obj = new URL("https://elections.hse.ru/elections/getAllCandidates");
+URL obj = new URL("https://elections.hse.ru/admin/getAllCandidates");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -2980,7 +2987,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://elections.hse.ru/elections/getAllCandidates", data)
+    req, err := http.NewRequest("GET", "https://elections.hse.ru/admin/getAllCandidates", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -2990,7 +2997,7 @@ func main() {
 
 ```
 
-`GET /elections/getAllCandidates`
+`GET /admin/getAllCandidates`
 
 *Получить всех кандидатов*
 
@@ -3014,13 +3021,13 @@ func main() {
 ]
 ```
 
-<h3 id="get__elections_getallcandidates-responses">Responses</h3>
+<h3 id="get__admin_getallcandidates-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Возвращает кандидатов|Inline|
 
-<h3 id="get__elections_getallcandidates-responseschema">Response Schema</h3>
+<h3 id="get__admin_getallcandidates-responseschema">Response Schema</h3>
 
 Status Code **200**
 
@@ -3722,7 +3729,8 @@ This operation does not require authentication
   ],
   "startTime": "2019-08-24T14:15:22Z",
   "finishTime": "2019-08-24T14:15:22Z",
-  "status": "draft"
+  "status": "draft",
+  "isVoted": true
 }
 
 ```
@@ -3744,6 +3752,7 @@ This operation does not require authentication
 |startTime|string(date-time)|true|none|none|
 |finishTime|string(date-time)|false|none|none|
 |status|string|true|none|none|
+|isVoted|boolean|false|none|none|
 
 #### Enumerated Values
 
